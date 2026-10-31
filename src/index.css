@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-serif: 'Newsreader', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-handwriting: 'Caveat', cursive;
+  }
+}
+
+/* Custom fonts */
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.font-handwriting {
+  font-family: var(--font-handwriting);
+}
+
+/* Paper texture effect for Artist mode */
+.bg-paper-texture {
+  background-color: #faf7f2;
+  background-image: 
+    radial-gradient(#e2d9cc 0.75px, transparent 0.75px),
+    radial-gradient(#d3c7b5 0.5px, #faf7f2 0.5px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+/* Terminal blueprint grid for Engineer mode */
+.bg-grid-blueprint {
+  background-color: #0b0f19;
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Glowing dot overlay */
+.terminal-glow {
+  text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+
+.ink-stroke {
+  filter: drop-shadow(0 2px 3px rgba(30, 27, 24, 0.15));
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.5);
+}
