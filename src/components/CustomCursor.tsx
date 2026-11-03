@@ -93,7 +93,7 @@ export const CustomCursor: React.FC = () => {
         ref={ringRef}
         className={`fixed top-0 left-0 -ml-5 -mt-5 rounded-full pointer-events-none z-[9998] transition-all duration-300 ease-out flex items-center justify-center ${
           cursorText
-            ? 'w-20 h-20 -ml-10 -mt-10 bg-[var(--accent)] text-[var(--bg-page)] scale-100 shadow-lg shadow-[var(--accent)]/20'
+            ? 'w-20 h-20 -ml-10 -mt-10 bg-[var(--accent)] text-white scale-100 shadow-lg shadow-[var(--accent)]/20'
             : isHovered
               ? 'w-12 h-12 -ml-6 -mt-6 border border-[var(--accent)] bg-[var(--accent)]/10 scale-125'
               : 'w-10 h-10 border border-[var(--accent)]/40 scale-100'

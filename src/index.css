@@ -2,24 +2,6 @@
 
 @layer base {
   :root {
-    --bg-page: #0c0c0e;
-    --bg-card: #131316;
-    --bg-card-hover: #18181d;
-    --border-color: #1e1e24;
-    --border-highlight: #d4a373;
-    --text-primary: #f2f0eb;
-    --text-secondary: #8a8996;
-    --text-muted: #55545e;
-    --accent: #d4a373;
-    --accent-subtle: rgba(212, 163, 115, 0.08);
-    --accent-glow: rgba(212, 163, 115, 0.2);
-    --font-display: 'Syne', sans-serif;
-    --font-serif: 'Newsreader', Georgia, serif;
-    --font-mono: 'JetBrains Mono', monospace;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-
-  .theme-light {
     --bg-page: #f7f5f0;
     --bg-card: #ffffff;
     --bg-card-hover: #fcfbfa;
@@ -31,6 +13,10 @@
     --accent: #b84a28;
     --accent-subtle: rgba(184, 74, 40, 0.06);
     --accent-glow: rgba(184, 74, 40, 0.15);
+    --font-display: 'Syne', sans-serif;
+    --font-serif: 'Newsreader', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 }
 

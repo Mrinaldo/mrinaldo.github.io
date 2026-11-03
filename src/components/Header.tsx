@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 interface HeaderProps {
-  theme: 'dark' | 'light';
-  onToggleTheme: () => void;
   onOpenContact: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme, onOpenContact }) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
   const [time, setTime] = useState<string>('');
 
   useEffect(() => {
@@ -36,7 +34,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme, onOpenCont
               MRINAL DHARMIK
             </span>
             <span className="text-[10px] font-mono text-[var(--accent)] font-medium">
-              [IST {time || '15:20'}]
+              [IST {time || '16:00'}]
             </span>
           </a>
         </div>
@@ -58,25 +56,13 @@ export const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme, onOpenCont
             </a>
           </nav>
 
-          <div className="flex items-center gap-4">
-            {/* Minimal Theme Switcher */}
-            <button
-              onClick={onToggleTheme}
-              className="text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)] hover:text-[var(--text-primary)] px-2.5 py-1 rounded border border-editorial hover:border-[var(--accent)] transition-colors"
-              title="Toggle theme"
-            >
-              {theme === 'dark' ? 'Noir' : 'Chalk'}
-            </button>
-
-            {/* Inquire Action */}
-            <button
-              onClick={onOpenContact}
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-[var(--accent)] text-[var(--bg-page)] font-bold hover:opacity-90 transition-all shadow-sm"
-            >
-              <span>Connect</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
+          <button
+            onClick={onOpenContact}
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-[var(--accent)] text-white font-bold hover:opacity-90 transition-all shadow-sm"
+          >
+            <span>Connect</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </button>
         </div>
 
       </div>

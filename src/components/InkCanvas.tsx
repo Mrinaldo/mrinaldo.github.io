@@ -119,7 +119,7 @@ export const InkCanvas: React.FC = () => {
                 onClick={() => setPenSize(nib.size)}
                 className={`px-2 py-0.5 rounded text-[11px] transition-colors ${
                   penSize === nib.size 
-                    ? 'bg-[var(--accent)] text-[var(--bg-page)] font-bold' 
+                    ? 'bg-[var(--accent)] text-white font-bold' 
                     : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
@@ -160,7 +160,7 @@ export const InkCanvas: React.FC = () => {
             <button
               onClick={downloadCanvas}
               data-cursor="SAVE"
-              className="flex items-center gap-1 px-3 py-1 bg-[var(--accent)] text-[var(--bg-page)] rounded-lg text-xs font-mono font-bold hover:opacity-90 transition-all shadow-sm"
+              className="flex items-center gap-1 px-3 py-1 bg-[var(--accent)] text-white rounded-lg text-xs font-mono font-bold hover:opacity-90 transition-all shadow-sm"
               title="Save drawing"
             >
               <Download className="w-3.5 h-3.5" />

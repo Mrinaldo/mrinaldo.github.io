@@ -141,7 +141,7 @@ export const EngineeringSection: React.FC = () => {
                             target="_blank"
                             rel="noreferrer"
                             data-cursor="VISIT"
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--accent)] text-[var(--bg-page)] text-xs font-mono uppercase tracking-wider font-bold hover:opacity-90 transition-all shadow-sm"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--accent)] text-white text-xs font-mono uppercase tracking-wider font-bold hover:opacity-90 transition-all shadow-sm"
                           >
                             <span>Live Platform</span>
                             <ArrowUpRight className="w-3.5 h-3.5" />
