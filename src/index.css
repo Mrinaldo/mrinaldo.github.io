@@ -4,12 +4,76 @@
   :root {
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-serif: 'Newsreader', Georgia, serif;
+    --font-display: 'Playfair Display', Georgia, serif;
     --font-mono: 'JetBrains Mono', monospace;
     --font-handwriting: 'Caveat', cursive;
   }
 }
 
-/* Custom fonts */
+/* ==========================================================================
+   THEME 1: THE ATELIER (Ivory, Sumi Ink & Terracotta) - Recommended
+   ========================================================================== */
+.theme-atelier {
+  --bg-page: #faf7f2;
+  --bg-card: #ffffff;
+  --bg-card-muted: #f4ede2;
+  --border-color: #e7e0d3;
+  --border-hover: #c2410c;
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-muted: #857e75;
+  --accent: #c2410c;
+  --accent-hover: #9a3412;
+  --accent-muted: #ffedd5;
+  --accent-fg: #ffffff;
+  --font-heading: 'Newsreader', Georgia, serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   THEME 2: OBSIDIAN FORGE (Graphite Slate, Crisp White & Amber Gold)
+   ========================================================================== */
+.theme-obsidian {
+  --bg-page: #0b0e14;
+  --bg-card: #131720;
+  --bg-card-muted: #1b212e;
+  --border-color: #212836;
+  --border-hover: #f59e0b;
+  --text-primary: #f3f4f6;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #f59e0b;
+  --accent-hover: #d97706;
+  --accent-muted: #2d2006;
+  --accent-fg: #0b0e14;
+  --font-heading: 'JetBrains Mono', monospace;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   THEME 3: BROADSIDE GAZETTE (Newsprint, Printer's Black & Forest Pine)
+   ========================================================================== */
+.theme-gazette {
+  --bg-page: #f4f0e6;
+  --bg-card: #ede7da;
+  --bg-card-muted: #e2dbcb;
+  --border-color: #d6cebf;
+  --border-hover: #1b4332;
+  --text-primary: #121212;
+  --text-secondary: #4a4843;
+  --text-muted: #6e6b63;
+  --accent: #1b4332;
+  --accent-hover: #0f281e;
+  --accent-muted: #e3ede6;
+  --accent-fg: #ffffff;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}
+
+/* Fonts */
 .font-sans {
   font-family: var(--font-sans);
 }
@@ -22,36 +86,21 @@
   font-family: var(--font-mono);
 }
 
-.font-handwriting {
-  font-family: var(--font-handwriting);
+.font-heading {
+  font-family: var(--font-heading);
 }
 
-/* Paper texture effect for Artist mode */
-.bg-paper-texture {
-  background-color: #faf7f2;
+/* Subtle texture overlays */
+.bg-subtle-grain {
   background-image: 
-    radial-gradient(#e2d9cc 0.75px, transparent 0.75px),
-    radial-gradient(#d3c7b5 0.5px, #faf7f2 0.5px);
-  background-size: 30px 30px;
-  background-position: 0 0, 15px 15px;
+    radial-gradient(rgba(0, 0, 0, 0.03) 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
 }
 
-/* Terminal blueprint grid for Engineer mode */
-.bg-grid-blueprint {
-  background-color: #0b0f19;
+.theme-obsidian .bg-subtle-grain {
   background-image: 
-    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-
-/* Glowing dot overlay */
-.terminal-glow {
-  text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
-}
-
-.ink-stroke {
-  filter: drop-shadow(0 2px 3px rgba(30, 27, 24, 0.15));
+    radial-gradient(rgba(255, 255, 255, 0.04) 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
 }
 
 /* Custom Scrollbar */
@@ -64,10 +113,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(150, 150, 150, 0.3);
+  background: var(--border-color);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(150, 150, 150, 0.5);
+  background: var(--text-muted);
 }

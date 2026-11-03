@@ -7,8 +7,7 @@ interface MusicSectionProps {
   mode: PortfolioMode;
 }
 
-export const MusicSection: React.FC<MusicSectionProps> = ({ mode }) => {
-  const isEngineer = mode === 'engineer';
+export const MusicSection: React.FC<MusicSectionProps> = () => {
   const spotify = SOCIAL_LINKS.find(s => s.name === 'Spotify')?.url;
   const [activeString, setActiveString] = useState<number | null>(null);
 
@@ -51,28 +50,20 @@ export const MusicSection: React.FC<MusicSectionProps> = ({ mode }) => {
   };
 
   return (
-    <section id="fretboard" className={`py-16 transition-colors duration-500 ${
-      isEngineer ? 'bg-transparent text-stone-200' : 'bg-transparent text-stone-900'
-    }`}>
+    <section id="fretboard" className="py-16 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <div className={`flex items-center gap-2 text-xs uppercase font-mono tracking-widest mb-2 ${
-              isEngineer ? 'text-cyan-400' : 'text-amber-800'
-            }`}>
+            <div className="flex items-center gap-2 text-xs uppercase font-mono tracking-widest mb-2 text-[var(--accent)] font-semibold">
               <Music className="w-4 h-4" />
               <span>Sonic Spectrum // 04</span>
             </div>
-            <h2 className={`text-2xl sm:text-4xl font-bold tracking-tight ${
-              isEngineer ? 'font-mono text-white' : 'font-serif text-stone-900'
-            }`}>
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight font-heading text-[var(--text-primary)]">
               The Fretboard & Acoustics
             </h2>
-            <p className={`text-sm sm:text-base mt-2 max-w-2xl ${
-              isEngineer ? 'text-stone-400 font-sans' : 'text-stone-700 font-serif'
-            }`}>
+            <p className="text-sm sm:text-base mt-2 max-w-2xl text-[var(--text-secondary)] font-sans">
               Guitar is where rhythm and muscle memory take over. When software problems hit a wall, twenty minutes on six strings resets the mind.
             </p>
           </div>
@@ -82,13 +73,9 @@ export const MusicSection: React.FC<MusicSectionProps> = ({ mode }) => {
               href={spotify}
               target="_blank"
               rel="noreferrer"
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all self-start md:self-auto border ${
-                isEngineer
-                  ? 'bg-cyan-950/60 text-cyan-300 border-cyan-800 hover:border-cyan-400 font-mono'
-                  : 'bg-white text-stone-800 border-stone-300 hover:border-amber-700 font-serif shadow-sm'
-              }`}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-mono font-medium transition-all self-start md:self-auto border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-primary)] hover:border-[var(--accent)] shadow-sm"
             >
-              <Disc3 className="w-4 h-4 text-emerald-500" />
+              <Disc3 className="w-4 h-4 text-[var(--accent)]" />
               <span>Spotify Profile</span>
               <ExternalLink className="w-3.5 h-3.5 opacity-60" />
             </a>
@@ -99,19 +86,15 @@ export const MusicSection: React.FC<MusicSectionProps> = ({ mode }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column: Interactive Guitar Strings */}
-          <div className={`lg:col-span-7 p-6 sm:p-8 rounded-2xl border transition-all ${
-            isEngineer 
-              ? 'bg-[#0f172a]/80 border-cyan-900/30 text-stone-200' 
-              : 'bg-white border-stone-300 shadow-md text-stone-800'
-          }`}>
-            <div className="flex items-center justify-between mb-6 pb-4 border-b border-stone-200 dark:border-stone-800">
+          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] shadow-sm text-[var(--text-primary)]">
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-[var(--border-color)]">
               <div className="flex items-center gap-2">
-                <Volume2 className="w-5 h-5 text-amber-600 dark:text-cyan-400" />
-                <h4 className="font-serif font-bold text-lg">
+                <Volume2 className="w-5 h-5 text-[var(--accent)]" />
+                <h4 className="font-heading font-bold text-lg">
                   Interactive Soundboard • Standard Tuning (E A D G B E)
                 </h4>
               </div>
-              <span className="text-xs font-mono text-stone-400 hidden sm:inline">
+              <span className="text-xs font-mono text-[var(--text-muted)] hidden sm:inline">
                 Click a string to strum
               </span>
             </div>
@@ -126,7 +109,7 @@ export const MusicSection: React.FC<MusicSectionProps> = ({ mode }) => {
                     onClick={() => playStringNote(str.freq, idx)}
                     className="group cursor-pointer flex items-center gap-4 select-none"
                   >
-                    <div className="w-16 text-xs font-mono font-bold text-stone-500 group-hover:text-amber-600 dark:group-hover:text-cyan-400 transition-colors">
+                    <div className="w-16 text-xs font-mono font-bold text-[var(--text-muted)] group-hover:text-[var(--accent)] transition-colors">
                       {str.note} <span className="opacity-60 text-[10px]">({str.gauge})</span>
                     </div>
 
@@ -135,14 +118,14 @@ export const MusicSection: React.FC<MusicSectionProps> = ({ mode }) => {
                       <div
                         className={`w-full rounded-full transition-all duration-300 ${
                           isPlucked 
-                            ? 'bg-amber-500 dark:bg-cyan-400 h-1.5 shadow-lg shadow-amber-500/50 scale-y-125 animate-pulse' 
-                            : 'bg-stone-300 dark:bg-stone-700 group-hover:bg-amber-400 dark:group-hover:bg-cyan-500 h-[2px]'
+                            ? 'bg-[var(--accent)] h-1.5 shadow-md scale-y-125' 
+                            : 'bg-[var(--border-color)] group-hover:bg-[var(--accent)]/70 h-[2px]'
                         }`}
                       />
 
-                      {/* Strum wave effect */}
+                      {/* Strum wave readout */}
                       {isPlucked && (
-                        <span className="absolute right-0 text-xs font-mono font-bold text-amber-600 dark:text-cyan-400 animate-fade-in">
+                        <span className="absolute right-0 text-xs font-mono font-bold text-[var(--accent)] animate-pulse">
                           {str.freq.toFixed(1)} Hz ♫
                         </span>
                       )}
@@ -152,7 +135,7 @@ export const MusicSection: React.FC<MusicSectionProps> = ({ mode }) => {
               })}
             </div>
 
-            <p className="text-xs text-stone-500 dark:text-stone-400 font-serif italic mt-6 text-center">
+            <p className="text-xs text-[var(--text-muted)] font-mono mt-6 text-center">
               Synthesized through Web Audio API. Fingerstyle acoustic patterns & electric tone experiments.
             </p>
           </div>
@@ -161,26 +144,22 @@ export const MusicSection: React.FC<MusicSectionProps> = ({ mode }) => {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Spotify Card */}
-            <div className={`p-6 rounded-2xl border transition-all ${
-              isEngineer 
-                ? 'bg-gradient-to-br from-slate-900 to-[#0b101c] border-cyan-900/30' 
-                : 'bg-gradient-to-br from-amber-50/60 to-white border-stone-300 shadow-md'
-            }`}>
+            <div className="p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] shadow-sm">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-500">
+                <div className="w-10 h-10 rounded-full bg-[var(--accent-muted)] border border-[var(--accent)]/30 flex items-center justify-center text-[var(--accent)]">
                   <Disc3 className="w-6 h-6 animate-spin-slow" />
                 </div>
                 <div>
-                  <h4 className="font-serif font-bold text-base text-stone-900 dark:text-stone-100">
+                  <h4 className="font-heading font-bold text-base text-[var(--text-primary)]">
                     The Soundtrack to Code & Words
                   </h4>
-                  <p className="text-xs text-stone-500 dark:text-stone-400">
+                  <p className="text-xs text-[var(--text-muted)] font-mono">
                     Curated on Spotify by @mrinaldo
                   </p>
                 </div>
               </div>
 
-              <p className="text-sm leading-relaxed text-stone-600 dark:text-stone-300 font-serif mb-6">
+              <p className="text-sm leading-relaxed text-[var(--text-secondary)] font-sans mb-6">
                 Deep acoustic fingerpicking, classic rock riffs, and atmospheric instrumental textures that accompany late-night coding sessions and early morning drafts.
               </p>
 
@@ -189,7 +168,7 @@ export const MusicSection: React.FC<MusicSectionProps> = ({ mode }) => {
                   href={spotify}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs font-sans transition-all shadow-md shadow-emerald-600/20"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-bold transition-all shadow-sm bg-[var(--accent)] text-[var(--accent-fg)] hover:opacity-90"
                 >
                   <Disc3 className="w-4 h-4" />
                   <span>Open Spotify Profile</span>
@@ -199,7 +178,7 @@ export const MusicSection: React.FC<MusicSectionProps> = ({ mode }) => {
             </div>
 
             {/* Quick Quote on Music */}
-            <div className="p-5 rounded-xl border border-dashed border-stone-300 dark:border-stone-800 text-xs font-serif italic text-stone-600 dark:text-stone-400 leading-relaxed">
+            <div className="p-5 rounded-xl border border-dashed border-[var(--border-color)] text-xs font-serif italic text-[var(--text-muted)] leading-relaxed bg-[var(--bg-card-muted)]/50">
               “Music is the architecture of time. Just as good code needs structure and a novel needs cadence, a guitar chord anchors the present moment.”
             </div>
 

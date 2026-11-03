@@ -89,29 +89,29 @@ export const InkCanvas: React.FC = () => {
     link.click();
 
     confetti({
-      particleCount: 60,
-      spread: 70,
+      particleCount: 50,
+      spread: 60,
       origin: { y: 0.7 }
     });
   };
 
   return (
-    <div className="rounded-2xl border border-amber-900/20 bg-white/95 p-4 sm:p-6 shadow-xl backdrop-blur-md">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 pb-4 border-b border-amber-900/10">
+    <div className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-4 sm:p-6 shadow-sm">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 pb-4 border-b border-[var(--border-color)]">
         <div>
-          <h4 className="font-serif font-bold text-stone-900 text-lg flex items-center gap-2">
-            <Palette className="w-4 h-4 text-amber-800" />
+          <h4 className="font-heading font-bold text-[var(--text-primary)] text-lg flex items-center gap-2">
+            <Palette className="w-4 h-4 text-[var(--accent)]" />
             <span>Interactive Inkwell Scratchpad</span>
           </h4>
-          <p className="text-xs text-stone-600 font-serif italic">
-            Test the nib. Pick your pen weight and sketch right on paper.
+          <p className="text-xs text-[var(--text-muted)] font-mono mt-0.5">
+            Test the nib. Select pen gauge and sketch directly on paper.
           </p>
         </div>
 
         {/* Toolbar Controls */}
         <div className="flex flex-wrap items-center gap-2">
           {/* Nib Weights */}
-          <div className="flex items-center gap-1 bg-amber-50 p-1 rounded-lg border border-amber-200 text-xs font-mono">
+          <div className="flex items-center gap-1 bg-[var(--bg-card-muted)] p-1 rounded-lg border border-[var(--border-color)] text-xs font-mono">
             {[
               { label: '0.1mm', size: 1.5 },
               { label: '0.3mm', size: 3 },
@@ -123,8 +123,8 @@ export const InkCanvas: React.FC = () => {
                 onClick={() => setPenSize(nib.size)}
                 className={`px-2 py-0.5 rounded transition-colors ${
                   penSize === nib.size 
-                    ? 'bg-amber-800 text-amber-50 font-bold' 
-                    : 'text-stone-700 hover:bg-amber-100'
+                    ? 'bg-[var(--accent)] text-[var(--accent-fg)] font-bold' 
+                    : 'text-[var(--text-secondary)] hover:bg-[var(--border-color)]'
                 }`}
               >
                 {nib.label}
@@ -133,18 +133,18 @@ export const InkCanvas: React.FC = () => {
           </div>
 
           {/* Ink Shades */}
-          <div className="flex items-center gap-1.5 px-2 py-1 bg-amber-50 rounded-lg border border-amber-200">
+          <div className="flex items-center gap-1.5 px-2 py-1 bg-[var(--bg-card-muted)] rounded-lg border border-[var(--border-color)]">
             {[
               { color: '#1c1917', title: 'India Ink' },
-              { color: '#78350f', title: 'Sepia Brown' },
-              { color: '#1e3a8a', title: 'Midnight Blue' }
+              { color: '#78350f', title: 'Sepia Ink' },
+              { color: '#1b4332', title: 'Pine Ink' }
             ].map(shade => (
               <button
                 key={shade.color}
                 onClick={() => setInkColor(shade.color)}
                 style={{ backgroundColor: shade.color }}
                 className={`w-4 h-4 rounded-full border transition-transform ${
-                  inkColor === shade.color ? 'scale-125 ring-2 ring-amber-600 border-white' : 'border-stone-400'
+                  inkColor === shade.color ? 'scale-125 ring-2 ring-[var(--accent)] border-white' : 'border-stone-400'
                 }`}
                 title={shade.title}
               />
@@ -154,7 +154,7 @@ export const InkCanvas: React.FC = () => {
           {/* Action buttons */}
           <button
             onClick={clearCanvas}
-            className="p-1.5 text-stone-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors border border-stone-200"
+            className="p-1.5 text-[var(--text-secondary)] hover:text-red-600 hover:bg-[var(--bg-card-muted)] rounded-lg transition-colors border border-[var(--border-color)]"
             title="Clear canvas"
           >
             <RefreshCw className="w-4 h-4" />
@@ -163,7 +163,7 @@ export const InkCanvas: React.FC = () => {
           {hasDrawn && (
             <button
               onClick={downloadCanvas}
-              className="flex items-center gap-1 px-3 py-1 bg-amber-800 hover:bg-amber-900 text-amber-50 rounded-lg text-xs font-serif transition-colors shadow-sm"
+              className="flex items-center gap-1 px-3 py-1 bg-[var(--accent)] text-[var(--accent-fg)] hover:opacity-90 rounded-lg text-xs font-mono transition-colors shadow-sm"
               title="Save your sketch"
             >
               <Download className="w-3.5 h-3.5" />
@@ -174,7 +174,7 @@ export const InkCanvas: React.FC = () => {
       </div>
 
       {/* Canvas Area */}
-      <div className="relative rounded-xl border border-stone-300 overflow-hidden shadow-inner cursor-crosshair touch-none bg-[#faf7f2]">
+      <div className="relative rounded-xl border border-[var(--border-color)] overflow-hidden shadow-inner cursor-crosshair touch-none bg-[#faf7f2]">
         <canvas
           ref={canvasRef}
           onMouseDown={startDrawing}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { PortfolioMode } from './types';
+import { PortfolioMode, ThemeId } from './types';
+import { ThemeSelector } from './components/ThemeSelector';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { EngineeringSection } from './components/EngineeringSection';
@@ -10,6 +11,15 @@ import { ContactModal } from './components/ContactModal';
 import { Footer } from './components/Footer';
 
 export const App: React.FC = () => {
+  // Theme state: 'atelier' (default) | 'obsidian' | 'gazette'
+  const [theme, setTheme] = useState<ThemeId>(() => {
+    const saved = localStorage.getItem('mrinaldo_portfolio_theme');
+    return (saved === 'atelier' || saved === 'obsidian' || saved === 'gazette') 
+      ? (saved as ThemeId) 
+      : 'atelier';
+  });
+
+  // Perspective mode: 'engineer' | 'artist'
   const [mode, setMode] = useState<PortfolioMode>(() => {
     const saved = localStorage.getItem('mrinaldo_portfolio_mode');
     return (saved === 'artist' || saved === 'engineer') ? saved : 'engineer';
@@ -18,13 +28,16 @@ export const App: React.FC = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
+    localStorage.setItem('mrinaldo_portfolio_theme', theme);
+  }, [theme]);
+
+  useEffect(() => {
     localStorage.setItem('mrinaldo_portfolio_mode', mode);
   }, [mode]);
 
   // Keyboard shortcut: 'E' for engineer, 'A' for artist
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Don't trigger if user is typing in an input or textarea
       if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) {
         return;
       }
@@ -43,19 +56,12 @@ export const App: React.FC = () => {
   const isEngineer = mode === 'engineer';
 
   return (
-    <div className={`min-h-screen transition-all duration-700 ${
-      isEngineer 
-        ? 'bg-grid-blueprint text-stone-200' 
-        : 'bg-paper-texture text-stone-900'
-    }`}>
-      {/* Keyboard shortcut hint banner */}
-      <div className={`py-1 text-center text-[10px] tracking-wider uppercase font-mono transition-colors duration-500 border-b ${
-        isEngineer 
-          ? 'bg-[#060a12] border-cyan-950 text-cyan-600' 
-          : 'bg-[#ede6d8] border-amber-900/10 text-stone-600'
-      }`}>
-        Dual Frequency Mode • Press <kbd className="px-1 py-0.5 rounded bg-black/20 font-bold">E</kbd> for Engineer • <kbd className="px-1 py-0.5 rounded bg-black/20 font-bold">A</kbd> for Artisan
-      </div>
+    <div className={`theme-${theme} min-h-screen bg-subtle-grain transition-colors duration-300 font-sans`}>
+      {/* Design System & Palette Selector Banner */}
+      <ThemeSelector 
+        currentTheme={theme} 
+        onSelectTheme={setTheme} 
+      />
 
       <Header 
         mode={mode} 
@@ -70,7 +76,7 @@ export const App: React.FC = () => {
           onToggleMode={setMode} 
         />
 
-        {/* Dynamic section ordering according to active mode */}
+        {/* Dynamic section ordering according to active perspective */}
         {isEngineer ? (
           <>
             <EngineeringSection mode={mode} />

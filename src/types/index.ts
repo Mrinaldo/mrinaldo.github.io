@@ -1,3 +1,5 @@
+export type ThemeId = 'atelier' | 'obsidian' | 'gazette';
+
 export type PortfolioMode = 'engineer' | 'artist';
 
 export interface Project {
