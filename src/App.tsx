@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { CustomCursor } from './components/CustomCursor';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { Marquee } from './components/Marquee';
 import { EngineeringSection } from './components/EngineeringSection';
 import { ArtSection } from './components/ArtSection';
 import { ReadingSection } from './components/ReadingSection';
@@ -26,6 +28,9 @@ export const App: React.FC = () => {
 
   return (
     <div className={`${theme === 'light' ? 'theme-light' : ''} min-h-screen bg-[var(--bg-page)] text-[var(--text-primary)] transition-colors duration-300 font-sans selection:bg-[var(--accent)]/30`}>
+      {/* Luxury Awwwards-grade Interactive Cursor */}
+      <CustomCursor />
+
       <Header 
         theme={theme} 
         onToggleTheme={toggleTheme} 
@@ -36,6 +41,7 @@ export const App: React.FC = () => {
         <Hero 
           onOpenContact={() => setIsContactOpen(true)} 
         />
+        <Marquee />
         <EngineeringSection />
         <ArtSection />
         <ReadingSection />

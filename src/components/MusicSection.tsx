@@ -17,7 +17,7 @@ export const MusicSection: React.FC = () => {
 
   const playNote = (freq: number, idx: number) => {
     setActiveString(idx);
-    setTimeout(() => setActiveString(null), 800);
+    setTimeout(() => setActiveString(null), 900);
 
     try {
       const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
@@ -28,7 +28,7 @@ export const MusicSection: React.FC = () => {
 
       osc.type = 'triangle';
       osc.frequency.setValueAtTime(freq, ctx.currentTime);
-      gain.gain.setValueAtTime(0.18, ctx.currentTime);
+      gain.gain.setValueAtTime(0.2, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.2);
 
       osc.connect(gain);
@@ -36,7 +36,7 @@ export const MusicSection: React.FC = () => {
       osc.start();
       osc.stop(ctx.currentTime + 1.2);
     } catch {
-      // Audio might require user gesture in some browsers
+      // Audio might require user interaction
     }
   };
 
@@ -69,7 +69,7 @@ export const MusicSection: React.FC = () => {
                 Synthesized Fretboard // E2–E4 Standard
               </span>
               <span className="text-[var(--text-muted)] hidden sm:inline">
-                Click a string to pluck
+                Hover & click a string to strum
               </span>
             </div>
 
@@ -79,19 +79,21 @@ export const MusicSection: React.FC = () => {
                 return (
                   <div
                     key={str.name}
+                    data-cursor="STRUM"
                     onClick={() => playNote(str.freq, idx)}
-                    className="group cursor-pointer flex items-center gap-6 select-none"
+                    className="group cursor-pointer flex items-center gap-6 select-none py-1"
                   >
                     <div className="w-12 text-xs font-mono text-[var(--text-muted)] group-hover:text-[var(--accent)] transition-colors">
                       {str.note} <span className="opacity-50 text-[10px]">{str.gauge}</span>
                     </div>
 
-                    <div className="flex-1 relative flex items-center h-6">
+                    <div className="flex-1 relative flex items-center h-8">
+                      {/* String line */}
                       <div
-                        className={`w-full rounded-full transition-all duration-300 ${
+                        className={`w-full rounded-full transition-all duration-150 ${
                           isPlucked 
-                            ? 'bg-[var(--accent)] h-1 shadow-sm' 
-                            : 'bg-editorial group-hover:bg-[var(--accent)]/60 h-[1.5px]'
+                            ? 'bg-[var(--accent)] h-1 shadow-sm scale-y-150 animate-pulse' 
+                            : 'bg-editorial group-hover:bg-[var(--accent)]/70 h-[1.5px]'
                         }`}
                       />
                       {isPlucked && (
@@ -126,6 +128,7 @@ export const MusicSection: React.FC = () => {
                 href={spotify}
                 target="_blank"
                 rel="noreferrer"
+                data-cursor="LISTEN"
                 className="inline-flex items-center justify-between p-4 rounded-xl border border-editorial hover:border-[var(--accent)] transition-all group bg-[var(--bg-page)]"
               >
                 <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)] group-hover:text-[var(--accent)]">

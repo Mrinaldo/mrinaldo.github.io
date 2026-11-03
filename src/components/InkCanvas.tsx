@@ -115,6 +115,7 @@ export const InkCanvas: React.FC = () => {
             ].map(nib => (
               <button
                 key={nib.label}
+                data-cursor={nib.label}
                 onClick={() => setPenSize(nib.size)}
                 className={`px-2 py-0.5 rounded text-[11px] transition-colors ${
                   penSize === nib.size 
@@ -135,6 +136,7 @@ export const InkCanvas: React.FC = () => {
             ].map(shade => (
               <button
                 key={shade.color}
+                data-cursor="COLOR"
                 onClick={() => setInkColor(shade.color)}
                 style={{ backgroundColor: shade.color }}
                 className={`w-3.5 h-3.5 rounded-full border transition-transform ${
@@ -147,6 +149,7 @@ export const InkCanvas: React.FC = () => {
 
           <button
             onClick={clearCanvas}
+            data-cursor="CLEAR"
             className="p-1.5 text-[var(--text-secondary)] hover:text-[var(--accent)] rounded-lg border border-editorial transition-colors"
             title="Clear canvas"
           >
@@ -156,6 +159,7 @@ export const InkCanvas: React.FC = () => {
           {hasDrawn && (
             <button
               onClick={downloadCanvas}
+              data-cursor="SAVE"
               className="flex items-center gap-1 px-3 py-1 bg-[var(--accent)] text-[var(--bg-page)] rounded-lg text-xs font-mono font-bold hover:opacity-90 transition-all shadow-sm"
               title="Save drawing"
             >
@@ -166,7 +170,10 @@ export const InkCanvas: React.FC = () => {
         </div>
       </div>
 
-      <div className="relative rounded-xl border border-editorial overflow-hidden cursor-crosshair touch-none bg-[#faf8f5]">
+      <div 
+        data-cursor="DRAW"
+        className="relative rounded-xl border border-editorial overflow-hidden cursor-crosshair touch-none bg-[#faf8f5]"
+      >
         <canvas
           ref={canvasRef}
           onMouseDown={startDrawing}
