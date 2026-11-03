@@ -2,80 +2,47 @@
 
 @layer base {
   :root {
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --bg-page: #0c0c0e;
+    --bg-card: #131316;
+    --bg-card-hover: #18181d;
+    --border-color: #1e1e24;
+    --border-highlight: #d4a373;
+    --text-primary: #f2f0eb;
+    --text-secondary: #8a8996;
+    --text-muted: #55545e;
+    --accent: #d4a373;
+    --accent-subtle: rgba(212, 163, 115, 0.08);
+    --accent-glow: rgba(212, 163, 115, 0.2);
+    --font-display: 'Syne', sans-serif;
     --font-serif: 'Newsreader', Georgia, serif;
-    --font-display: 'Playfair Display', Georgia, serif;
     --font-mono: 'JetBrains Mono', monospace;
-    --font-handwriting: 'Caveat', cursive;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .theme-light {
+    --bg-page: #f7f5f0;
+    --bg-card: #ffffff;
+    --bg-card-hover: #fcfbfa;
+    --border-color: #e4e0d5;
+    --border-highlight: #b84a28;
+    --text-primary: #141416;
+    --text-secondary: #636159;
+    --text-muted: #969389;
+    --accent: #b84a28;
+    --accent-subtle: rgba(184, 74, 40, 0.06);
+    --accent-glow: rgba(184, 74, 40, 0.15);
   }
 }
 
-/* ==========================================================================
-   THEME 1: THE ATELIER (Ivory, Sumi Ink & Terracotta) - Recommended
-   ========================================================================== */
-.theme-atelier {
-  --bg-page: #faf7f2;
-  --bg-card: #ffffff;
-  --bg-card-muted: #f4ede2;
-  --border-color: #e7e0d3;
-  --border-hover: #c2410c;
-  --text-primary: #1c1917;
-  --text-secondary: #57534e;
-  --text-muted: #857e75;
-  --accent: #c2410c;
-  --accent-hover: #9a3412;
-  --accent-muted: #ffedd5;
-  --accent-fg: #ffffff;
-  --font-heading: 'Newsreader', Georgia, serif;
+body {
   background-color: var(--bg-page);
   color: var(--text-primary);
-}
-
-/* ==========================================================================
-   THEME 2: OBSIDIAN FORGE (Graphite Slate, Crisp White & Amber Gold)
-   ========================================================================== */
-.theme-obsidian {
-  --bg-page: #0b0e14;
-  --bg-card: #131720;
-  --bg-card-muted: #1b212e;
-  --border-color: #212836;
-  --border-hover: #f59e0b;
-  --text-primary: #f3f4f6;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --accent: #f59e0b;
-  --accent-hover: #d97706;
-  --accent-muted: #2d2006;
-  --accent-fg: #0b0e14;
-  --font-heading: 'JetBrains Mono', monospace;
-  background-color: var(--bg-page);
-  color: var(--text-primary);
-}
-
-/* ==========================================================================
-   THEME 3: BROADSIDE GAZETTE (Newsprint, Printer's Black & Forest Pine)
-   ========================================================================== */
-.theme-gazette {
-  --bg-page: #f4f0e6;
-  --bg-card: #ede7da;
-  --bg-card-muted: #e2dbcb;
-  --border-color: #d6cebf;
-  --border-hover: #1b4332;
-  --text-primary: #121212;
-  --text-secondary: #4a4843;
-  --text-muted: #6e6b63;
-  --accent: #1b4332;
-  --accent-hover: #0f281e;
-  --accent-muted: #e3ede6;
-  --accent-fg: #ffffff;
-  --font-heading: 'Playfair Display', Georgia, serif;
-  background-color: var(--bg-page);
-  color: var(--text-primary);
-}
-
-/* Fonts */
-.font-sans {
   font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: var(--font-display);
 }
 
 .font-serif {
@@ -86,30 +53,22 @@
   font-family: var(--font-mono);
 }
 
-.font-heading {
-  font-family: var(--font-heading);
+.font-sans {
+  font-family: var(--font-sans);
 }
 
-/* Subtle texture overlays */
-.bg-subtle-grain {
-  background-image: 
-    radial-gradient(rgba(0, 0, 0, 0.03) 0.75px, transparent 0.75px);
-  background-size: 24px 24px;
+/* Editorial line dividers */
+.border-editorial {
+  border-color: var(--border-color);
 }
 
-.theme-obsidian .bg-subtle-grain {
-  background-image: 
-    radial-gradient(rgba(255, 255, 255, 0.04) 0.75px, transparent 0.75px);
-  background-size: 24px 24px;
-}
-
-/* Custom Scrollbar */
+/* Custom minimal scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--bg-page);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -118,5 +77,5 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+  background: var(--accent);
 }

@@ -1,110 +1,88 @@
 import React from 'react';
-import { PortfolioMode } from '../types';
 import { AUTHOR_STUDIES, MURAKAMI_PHILOSOPHY } from '../data/reading';
-import { BookOpen, ExternalLink, Quote, Feather } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { SOCIAL_LINKS } from '../data/socials';
 
-interface ReadingSectionProps {
-  mode: PortfolioMode;
-}
-
-export const ReadingSection: React.FC<ReadingSectionProps> = () => {
+export const ReadingSection: React.FC = () => {
   const goodreads = SOCIAL_LINKS.find(s => s.name === 'Goodreads')?.url;
 
   return (
-    <section id="library" className="py-16 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="reading" className="py-20 md:py-32 border-b border-editorial">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-6 border-b border-editorial">
           <div>
-            <div className="flex items-center gap-2 text-xs uppercase font-mono tracking-widest mb-2 text-[var(--accent)] font-semibold">
-              <BookOpen className="w-4 h-4" />
-              <span>Literary Canon & Storycraft // 03</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight font-heading text-[var(--text-primary)]">
-              The Library & The Written Word
+            <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">
+              Canon / 03
+            </span>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold uppercase text-[var(--text-primary)] mt-1">
+              The Library & Prose
             </h2>
-            <p className="text-sm sm:text-base mt-2 max-w-2xl text-[var(--text-secondary)] font-sans">
-              Avid reader and aspiring novelist. Dissecting masterworks of psychological drama and social irony to inform the gradual birth of new short stories.
-            </p>
           </div>
-
-          {goodreads && (
-            <a
-              href={goodreads}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-mono font-medium transition-all self-start md:self-auto border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-primary)] hover:border-[var(--accent)] shadow-sm"
-            >
-              <BookOpen className="w-4 h-4 text-[var(--accent)]" />
-              <span>Goodreads Profile</span>
-              <ExternalLink className="w-3.5 h-3.5 opacity-60" />
-            </a>
-          )}
+          <p className="text-sm font-serif italic text-[var(--text-secondary)] max-w-md">
+            Dissecting the nineteenth-century psychological and social canons to cultivate the architecture of emerging short fiction.
+          </p>
         </div>
 
-        {/* Featured Murakami Essay Card */}
-        <div className="mb-12 p-6 sm:p-10 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] shadow-sm">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider font-semibold text-[var(--accent)] mb-3">
-            <Feather className="w-4 h-4" />
-            <span>Storytelling Principle • Haruki Murakami Influence</span>
-          </div>
-
-          <blockquote className="text-lg sm:text-xl md:text-2xl font-serif italic text-[var(--text-primary)] leading-snug border-l-4 border-[var(--accent)] pl-4 sm:pl-6 my-4">
+        {/* Featured Murakami Principle Editorial Callout */}
+        <div className="mb-16 p-8 sm:p-12 rounded-3xl border border-editorial bg-[var(--bg-card)]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold block mb-4">
+            Storycraft Philosophy • Haruki Murakami
+          </span>
+          <blockquote className="text-2xl sm:text-4xl lg:text-5xl font-serif italic text-[var(--text-primary)] leading-tight max-w-4xl">
             “{MURAKAMI_PHILOSOPHY.quote}”
           </blockquote>
-
-          <div className="mt-6 text-sm sm:text-base leading-relaxed space-y-4 font-serif text-[var(--text-secondary)]">
+          
+          <div className="mt-8 pt-6 border-t border-editorial grid grid-cols-1 md:grid-cols-2 gap-8 text-sm sm:text-base font-serif text-[var(--text-secondary)] leading-relaxed">
             <p>
-              In both engineering systems and literary prose, you don't always build the monolith all at once. Haruki Murakami observed how many of his grandest narratives emerged from the quiet crucible of short stories.
+              In software, modular components assemble into complex distributed engines. In prose, short stories serve the identical role. They allow a writer to test voice, calibrate psychological subtext, and follow a mysterious character into the fog.
             </p>
             <p>
-              My goal is to first craft distinct short stories—sharpening dialogue, discovering authentic voices, and setting distinct atmospheric moods. Storytelling is not rushed; it is an incubation where a small, potent idea naturally compounds until it commands the canvas of a novel.
+              Given patience and craft discipline, that kernel naturally gathers weight, historical texture, and philosophical depth until it commands the expansive canvas of a novel.
             </p>
           </div>
         </div>
 
-        {/* Authors in Progress Grid: Dostoevsky & Austen */}
+        {/* Author Studies Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {AUTHOR_STUDIES.map((study) => (
             <div
               key={study.author}
-              className="p-6 sm:p-8 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-secondary)] shadow-sm flex flex-col justify-between"
+              className="p-8 rounded-2xl border border-editorial bg-[var(--bg-card)] flex flex-col justify-between space-y-6"
             >
               <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs uppercase font-mono tracking-wider font-semibold text-[var(--accent)]">
-                    Canon Study
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="text-[var(--accent)] uppercase font-semibold">
+                    Canon in Progress
                   </span>
-                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-[var(--bg-card-muted)] text-[var(--text-muted)] font-mono">
+                  <span className="text-[var(--text-muted)]">
                     {study.period}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">
+                  <h3 className="text-2xl sm:text-3xl font-display font-bold uppercase text-[var(--text-primary)]">
                     {study.author}
                   </h3>
-                  <p className="text-xs font-serif italic text-[var(--text-muted)] mt-0.5">
+                  <p className="text-xs font-mono text-[var(--accent)] mt-0.5">
                     Focus: {study.focus}
                   </p>
                 </div>
 
-                <p className="text-sm leading-relaxed font-serif text-[var(--text-secondary)]">
+                <p className="text-sm font-serif leading-relaxed text-[var(--text-secondary)]">
                   {study.reflection}
                 </p>
 
-                {/* Key Works Pills */}
                 <div className="pt-2">
-                  <div className="text-xs font-mono uppercase font-semibold text-[var(--text-muted)] mb-2">
-                    Key Works In Progress:
+                  <div className="text-[11px] font-mono uppercase text-[var(--text-muted)] mb-2 tracking-wider">
+                    Works Under Study:
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {study.keyWorks.map((work) => (
                       <span
                         key={work}
-                        className="text-xs px-2.5 py-1 rounded-md bg-[var(--bg-card-muted)] text-[var(--text-primary)] border border-[var(--border-color)] font-serif"
+                        className="text-xs font-serif px-2.5 py-1 rounded-md border border-editorial text-[var(--text-primary)] bg-[var(--bg-page)]"
                       >
                         {work}
                       </span>
@@ -114,14 +92,28 @@ export const ReadingSection: React.FC<ReadingSectionProps> = () => {
               </div>
 
               {study.quote && (
-                <div className="mt-6 pt-4 border-t border-[var(--border-color)] text-xs italic font-serif text-[var(--text-muted)] flex items-start gap-2">
-                  <Quote className="w-3.5 h-3.5 shrink-0 mt-0.5 text-[var(--accent)]" />
-                  <span>“{study.quote}”</span>
+                <div className="pt-4 border-t border-editorial text-xs font-serif italic text-[var(--text-muted)]">
+                  “{study.quote}”
                 </div>
               )}
             </div>
           ))}
         </div>
+
+        {/* Goodreads Link Card */}
+        {goodreads && (
+          <div className="mt-8 text-right">
+            <a
+              href={goodreads}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--accent)] hover:underline"
+            >
+              <span>View complete reading register on Goodreads</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        )}
 
       </div>
     </section>

@@ -1,29 +1,26 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Download, Palette, RefreshCw } from 'lucide-react';
+import { Download, RefreshCw } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export const InkCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [penSize, setPenSize] = useState<number>(2);
-  const [inkColor, setInkColor] = useState<string>('#1c1917'); // Dark India ink
+  const [inkColor, setInkColor] = useState<string>('#141416');
   const [hasDrawn, setHasDrawn] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Handle high DPI
     const rect = canvas.getBoundingClientRect();
     canvas.width = rect.width * 2;
     canvas.height = rect.height * 2;
     ctx.scale(2, 2);
 
-    // Initial warm paper background
-    ctx.fillStyle = '#faf7f2';
+    ctx.fillStyle = '#faf8f5';
     ctx.fillRect(0, 0, rect.width, rect.height);
   }, []);
 
@@ -74,7 +71,7 @@ export const InkCanvas: React.FC = () => {
     if (!ctx) return;
 
     const rect = canvas.getBoundingClientRect();
-    ctx.fillStyle = '#faf7f2';
+    ctx.fillStyle = '#faf8f5';
     ctx.fillRect(0, 0, rect.width, rect.height);
     setHasDrawn(false);
   };
@@ -84,7 +81,7 @@ export const InkCanvas: React.FC = () => {
     if (!canvas) return;
 
     const link = document.createElement('a');
-    link.download = `inktober-sketch-mrinaldo.png`;
+    link.download = `inktober-folio-mrinaldo.png`;
     link.href = canvas.toDataURL('image/png');
     link.click();
 
@@ -96,35 +93,33 @@ export const InkCanvas: React.FC = () => {
   };
 
   return (
-    <div className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-4 sm:p-6 shadow-sm">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 pb-4 border-b border-[var(--border-color)]">
+    <div className="rounded-2xl border border-editorial bg-[var(--bg-card)] p-4 sm:p-6 shadow-sm">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 pb-4 border-b border-editorial text-xs font-mono">
         <div>
-          <h4 className="font-heading font-bold text-[var(--text-primary)] text-lg flex items-center gap-2">
-            <Palette className="w-4 h-4 text-[var(--accent)]" />
-            <span>Interactive Inkwell Scratchpad</span>
-          </h4>
-          <p className="text-xs text-[var(--text-muted)] font-mono mt-0.5">
-            Test the nib. Select pen gauge and sketch directly on paper.
+          <span className="text-[var(--accent)] uppercase font-semibold">
+            Drafting Sheet // 300gsm cold-press
+          </span>
+          <p className="text-[var(--text-muted)] mt-0.5 font-sans">
+            Draw across the cotton weave below.
           </p>
         </div>
 
-        {/* Toolbar Controls */}
-        <div className="flex flex-wrap items-center gap-2">
-          {/* Nib Weights */}
-          <div className="flex items-center gap-1 bg-[var(--bg-card-muted)] p-1 rounded-lg border border-[var(--border-color)] text-xs font-mono">
+        <div className="flex items-center gap-2">
+          {/* Pen sizes */}
+          <div className="flex items-center gap-1 bg-[var(--bg-page)] p-1 rounded-lg border border-editorial">
             {[
-              { label: '0.1mm', size: 1.5 },
-              { label: '0.3mm', size: 3 },
-              { label: '0.5mm', size: 5 },
-              { label: '0.8mm', size: 8 }
+              { label: '0.1', size: 1.5 },
+              { label: '0.3', size: 3 },
+              { label: '0.5', size: 5 },
+              { label: '0.8', size: 8 }
             ].map(nib => (
               <button
                 key={nib.label}
                 onClick={() => setPenSize(nib.size)}
-                className={`px-2 py-0.5 rounded transition-colors ${
+                className={`px-2 py-0.5 rounded text-[11px] transition-colors ${
                   penSize === nib.size 
-                    ? 'bg-[var(--accent)] text-[var(--accent-fg)] font-bold' 
-                    : 'text-[var(--text-secondary)] hover:bg-[var(--border-color)]'
+                    ? 'bg-[var(--accent)] text-[var(--bg-page)] font-bold' 
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 {nib.label}
@@ -132,18 +127,17 @@ export const InkCanvas: React.FC = () => {
             ))}
           </div>
 
-          {/* Ink Shades */}
-          <div className="flex items-center gap-1.5 px-2 py-1 bg-[var(--bg-card-muted)] rounded-lg border border-[var(--border-color)]">
+          {/* Ink swatches */}
+          <div className="flex items-center gap-1.5 px-2 py-1 bg-[var(--bg-page)] rounded-lg border border-editorial">
             {[
-              { color: '#1c1917', title: 'India Ink' },
-              { color: '#78350f', title: 'Sepia Ink' },
-              { color: '#1b4332', title: 'Pine Ink' }
+              { color: '#141416', title: 'Carbon Black' },
+              { color: '#8a5026', title: 'Burnt Umber' }
             ].map(shade => (
               <button
                 key={shade.color}
                 onClick={() => setInkColor(shade.color)}
                 style={{ backgroundColor: shade.color }}
-                className={`w-4 h-4 rounded-full border transition-transform ${
+                className={`w-3.5 h-3.5 rounded-full border transition-transform ${
                   inkColor === shade.color ? 'scale-125 ring-2 ring-[var(--accent)] border-white' : 'border-stone-400'
                 }`}
                 title={shade.title}
@@ -151,20 +145,19 @@ export const InkCanvas: React.FC = () => {
             ))}
           </div>
 
-          {/* Action buttons */}
           <button
             onClick={clearCanvas}
-            className="p-1.5 text-[var(--text-secondary)] hover:text-red-600 hover:bg-[var(--bg-card-muted)] rounded-lg transition-colors border border-[var(--border-color)]"
+            className="p-1.5 text-[var(--text-secondary)] hover:text-[var(--accent)] rounded-lg border border-editorial transition-colors"
             title="Clear canvas"
           >
-            <RefreshCw className="w-4 h-4" />
+            <RefreshCw className="w-3.5 h-3.5" />
           </button>
 
           {hasDrawn && (
             <button
               onClick={downloadCanvas}
-              className="flex items-center gap-1 px-3 py-1 bg-[var(--accent)] text-[var(--accent-fg)] hover:opacity-90 rounded-lg text-xs font-mono transition-colors shadow-sm"
-              title="Save your sketch"
+              className="flex items-center gap-1 px-3 py-1 bg-[var(--accent)] text-[var(--bg-page)] rounded-lg text-xs font-mono font-bold hover:opacity-90 transition-all shadow-sm"
+              title="Save drawing"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Save</span>
@@ -173,8 +166,7 @@ export const InkCanvas: React.FC = () => {
         </div>
       </div>
 
-      {/* Canvas Area */}
-      <div className="relative rounded-xl border border-[var(--border-color)] overflow-hidden shadow-inner cursor-crosshair touch-none bg-[#faf7f2]">
+      <div className="relative rounded-xl border border-editorial overflow-hidden cursor-crosshair touch-none bg-[#faf8f5]">
         <canvas
           ref={canvasRef}
           onMouseDown={startDrawing}
@@ -187,8 +179,8 @@ export const InkCanvas: React.FC = () => {
           className="w-full h-64 sm:h-80 block"
         />
         {!hasDrawn && (
-          <div className="absolute inset-0 pointer-events-none flex items-center justify-center text-stone-400 text-sm font-serif italic select-none">
-            Click or draw with pen across the paper...
+          <div className="absolute inset-0 pointer-events-none flex items-center justify-center text-stone-400 text-xs sm:text-sm font-serif italic select-none">
+            Test the nib here. Every stroke on paper is permanent...
           </div>
         )}
       </div>

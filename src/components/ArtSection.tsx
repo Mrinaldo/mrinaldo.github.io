@@ -1,116 +1,94 @@
 import React from 'react';
-import { PortfolioMode } from '../types';
 import { InkCanvas } from './InkCanvas';
-import { Feather, ArrowUpRight, PenTool, Image as ImageIcon } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { InstagramIcon } from './BrandIcons';
 import { SOCIAL_LINKS } from '../data/socials';
 
-interface ArtSectionProps {
-  mode: PortfolioMode;
-}
-
-export const ArtSection: React.FC<ArtSectionProps> = () => {
+export const ArtSection: React.FC = () => {
   const instagram = SOCIAL_LINKS.find(s => s.name === 'Instagram')?.url;
 
   return (
-    <section id="inkwell" className="py-16 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="studio" className="py-20 md:py-32 border-b border-editorial">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-6 border-b border-editorial">
           <div>
-            <div className="flex items-center gap-2 text-xs uppercase font-mono tracking-widest mb-2 text-[var(--accent)] font-semibold">
-              <Feather className="w-4 h-4" />
-              <span>Visual Craft // 02</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight font-heading text-[var(--text-primary)]">
-              The Inkwell & Inktober Chronicles
+            <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">
+              Folio / 02
+            </span>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold uppercase text-[var(--text-primary)] mt-1">
+              The Inkwell & Studio
             </h2>
-            <p className="text-sm sm:text-base mt-2 max-w-2xl text-[var(--text-secondary)] font-sans">
-              Pen on paper demands absolute intentionality. Without an undo button, every stroke, hatching density, and ink bleed becomes a permanent truth.
-            </p>
           </div>
-
-          {instagram && (
-            <a
-              href={instagram}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-mono font-medium transition-all self-start md:self-auto border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-primary)] hover:border-[var(--accent)] shadow-sm"
-            >
-              <InstagramIcon className="w-4 h-4 text-[var(--accent)]" />
-              <span>Follow @mrinaldo7</span>
-              <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
-            </a>
-          )}
+          <p className="text-sm font-serif italic text-[var(--text-secondary)] max-w-md">
+            The discipline of the irreversible line. Exploring Inktober drawings, nib gauges, and pen-and-wash compositions on cold-press paper.
+          </p>
         </div>
 
-        {/* Two-Column Grid: Interactive Canvas + Gallery Notes */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Two-Column Studio Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
-          {/* Left Column: Interactive Canvas */}
+          {/* Left: Interactive Canvas */}
           <div className="lg:col-span-7">
             <InkCanvas />
           </div>
 
-          {/* Right Column: Ink Studies & Aesthetic Previews */}
+          {/* Right: Studio Monograph */}
           <div className="lg:col-span-5 space-y-6">
-            
-            {/* The Discipline Card */}
-            <div className="p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-secondary)] shadow-sm">
-              <div className="flex items-center gap-2 text-[var(--accent)] mb-2 font-serif text-sm font-bold">
-                <PenTool className="w-4 h-4" />
-                <span>The Art of the Irreversible Line</span>
-              </div>
-              <p className="text-sm leading-relaxed font-serif">
-                In software, we write tests and refactor with git. In ink drawing, you live with your initial marks. Inktober is an exercise in focus, line weight control, and embracing happy accidents on 300gsm cold-press paper.
+            <div className="p-6 sm:p-8 rounded-2xl border border-editorial bg-[var(--bg-card)] space-y-4">
+              <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">
+                Artist Statement
+              </span>
+              <h3 className="text-2xl font-serif italic text-[var(--text-primary)]">
+                “In software we refactor. In ink, every stroke is a permanent commitment.”
+              </h3>
+              <p className="text-sm font-sans text-[var(--text-secondary)] leading-relaxed">
+                Drawing with pigment liners and India ink removes the safety net of undo buffers. It forces a deliberate pacing: observing negative space, calibrating hatching density, and letting raw accidents become integral to the texture.
               </p>
 
-              <div className="mt-4 pt-4 border-t border-[var(--border-color)] flex items-center justify-between text-xs font-mono">
-                <span className="text-[var(--text-muted)]">Favorite Medium:</span>
-                <span className="font-semibold text-[var(--accent)]">Sakura Micron + Pentel Pocket Brush</span>
+              <div className="pt-4 border-t border-editorial text-xs font-mono text-[var(--text-muted)] space-y-1.5">
+                <div className="flex justify-between">
+                  <span>MEDIUM:</span>
+                  <span className="text-[var(--text-primary)] font-medium">Sakura Pigma Micron 0.05mm–0.8mm</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>PAPER:</span>
+                  <span className="text-[var(--text-primary)] font-medium">Arches 300gsm Grain Fin</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>EXHIBITION:</span>
+                  <span className="text-[var(--text-primary)] font-medium">Inktober Series & Life Studies</span>
+                </div>
               </div>
             </div>
 
-            {/* Gallery Placeholder Frame */}
-            <div className="p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-secondary)] shadow-sm">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs uppercase font-mono tracking-wider font-semibold text-[var(--text-muted)]">
-                  Portfolio Gallery Showcase
-                </span>
-                <span className="text-xs px-2 py-0.5 rounded bg-[var(--bg-card-muted)] text-[var(--accent)] font-mono font-medium border border-[var(--border-color)]">
-                  Curating Ink Pieces
-                </span>
-              </div>
-
-              <div className="rounded-xl border border-dashed border-[var(--border-color)] p-8 text-center space-y-3 bg-[var(--bg-card-muted)]/50">
-                <div className="w-12 h-12 mx-auto rounded-full bg-[var(--bg-card)] border border-[var(--border-color)] flex items-center justify-center text-[var(--accent)]">
-                  <ImageIcon className="w-6 h-6" />
+            {/* Instagram Archive Link */}
+            {instagram && (
+              <a
+                href={instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="group p-6 rounded-2xl border border-editorial bg-[var(--bg-card)] hover:border-[var(--accent)] flex items-center justify-between transition-all block"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-xl border border-editorial bg-[var(--bg-page)] text-[var(--accent)]">
+                    <InstagramIcon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-display font-bold text-sm uppercase text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
+                      Instagram Folio @mrinaldo7
+                    </h4>
+                    <p className="text-xs font-serif italic text-[var(--text-secondary)]">
+                      Explore ongoing sketchbooks, ink studies, and visual experiments
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-heading font-bold text-[var(--text-primary)]">
-                    High-Res Ink Scans In Preparation
-                  </h4>
-                  <p className="text-xs text-[var(--text-muted)] font-serif mt-1 max-w-xs mx-auto">
-                    New Inktober studies, character sketches, and pen-and-wash works will be exhibited here shortly.
-                  </p>
-                </div>
-
-                {instagram && (
-                  <a
-                    href={instagram}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[var(--accent)] hover:underline pt-2"
-                  >
-                    <span>Catch live sketches on Instagram</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
-                )}
-              </div>
-            </div>
-
+                <ArrowUpRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </a>
+            )}
           </div>
+
         </div>
 
       </div>
