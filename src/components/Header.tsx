@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 interface HeaderProps {
@@ -6,35 +6,15 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ onOpenContact }) => {
-  const [time, setTime] = useState<string>('');
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setTime(now.toLocaleTimeString('en-US', { 
-        timeZone: 'Asia/Kolkata', 
-        hour: '2-digit', 
-        minute: '2-digit',
-        hour12: true 
-      }));
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 10000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-[var(--bg-page)]/85 border-b border-editorial transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 h-20 flex items-center justify-between">
         
-        {/* Brand & Geolocation */}
+        {/* Brand */}
         <div className="flex items-center gap-6">
-          <a href="#" className="group flex items-baseline gap-2">
+          <a href="#" className="group">
             <span className="font-display font-bold text-sm tracking-widest text-[var(--text-primary)] uppercase group-hover:text-[var(--accent)] transition-colors">
               MRINAL DHARMIK
-            </span>
-            <span className="text-[10px] font-mono text-[var(--accent)] font-medium">
-              [IST {time || '16:00'}]
             </span>
           </a>
         </div>
