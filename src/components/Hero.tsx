@@ -1,6 +1,7 @@
 import React from 'react';
 import { SOCIAL_LINKS } from '../data/socials';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ImageFrame } from './ImageFrame';
 
 interface HeroProps {
   onOpenContact: () => void;
@@ -36,16 +37,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           </div>
         </div>
 
-        {/* Editorial Narrative & Bio */}
-        <div className="mt-12 md:mt-16 pt-8 border-t border-editorial grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <div className="lg:col-span-7">
+        {/* Editorial Narrative & Bio with Portrait Placeholder */}
+        <div className="mt-12 md:mt-16 pt-8 border-t border-editorial grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <div className="lg:col-span-7 space-y-6">
             <p className="text-lg sm:text-2xl font-serif leading-relaxed text-[var(--text-primary)] font-light">
               Senior software engineer specializing in local-first desktop environments, recommendation systems, and high-stakes enterprise analytics architectures. Otherwise dedicated to pen-and-ink drawing, the nineteenth-century novel canon, and fingerstyle guitar.
             </p>
-          </div>
 
-          <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-6">
-            <div className="text-xs font-mono text-[var(--text-secondary)] space-y-2 leading-relaxed">
+            <div className="text-xs font-mono text-[var(--text-secondary)] space-y-2 leading-relaxed pt-2">
               <div className="flex justify-between border-b border-editorial pb-1.5">
                 <span className="text-[var(--text-muted)]">CRAFT:</span>
                 <span className="text-[var(--text-primary)] font-medium">Electron · React 19 · Next.js · Supabase</span>
@@ -60,7 +60,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-4 pt-4">
               <a
                 href="#works"
                 className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--accent)] hover:underline"
@@ -102,6 +102,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               )}
             </div>
           </div>
+
+          {/* Right Column: Studio Portrait Frame */}
+          <div className="lg:col-span-5">
+            <ImageFrame
+              src="/images/bio/portrait.jpg"
+              alt="Mrinal Dharmik — Studio Portrait"
+              caption="[FIGURE 00: MRINAL DHARMIK / STUDIO PORTRAIT]"
+              aspectRatio="aspect-[4/3] sm:aspect-[4/3]"
+              placeholderTip="Drop portrait: /public/images/bio/portrait.jpg"
+              dimensions="1200 × 900 px"
+              category="STUDIO PORTRAIT"
+            />
+          </div>
+
         </div>
 
       </div>

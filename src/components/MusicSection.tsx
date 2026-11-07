@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Disc3, ArrowUpRight } from 'lucide-react';
 import { SOCIAL_LINKS } from '../data/socials';
+import { ImageFrame } from './ImageFrame';
 
 export const MusicSection: React.FC = () => {
   const spotify = SOCIAL_LINKS.find(s => s.name === 'Spotify')?.url;
@@ -108,35 +109,51 @@ export const MusicSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right: Spotify Archive */}
-          <div className="lg:col-span-5 p-6 sm:p-10 rounded-2xl border border-editorial bg-[var(--bg-card)] flex flex-col justify-between space-y-6">
-            <div>
-              <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-[var(--accent)] mb-4">
-                <Disc3 className="w-4 h-4 animate-spin-slow" />
-                <span>Audio Monograph</span>
+          {/* Right: Guitar Rig Frame + Spotify Archive */}
+          <div className="lg:col-span-5 space-y-6">
+            
+            {/* Guitar Photo Frame Placeholder */}
+            <ImageFrame
+              src="/images/music/guitar.jpg"
+              alt="Acoustic Setup & Guitar Rig"
+              caption="[PLATE 04.1: GUITAR RIG / FRETBOARD ARCHIVE]"
+              aspectRatio="aspect-[16/10]"
+              placeholderTip="Drop photo: /public/images/music/guitar.jpg"
+              dimensions="1600 × 1000 px"
+              category="ACOUSTIC RIG"
+            />
+
+            {/* Spotify Archive */}
+            <div className="p-6 sm:p-8 rounded-2xl border border-editorial bg-[var(--bg-card)] flex flex-col justify-between space-y-4">
+              <div>
+                <div className="flex items-center gap-2.5 text-xs font-mono uppercase tracking-widest text-[var(--accent)] mb-2 font-semibold">
+                  <Disc3 className="w-4 h-4 animate-spin-slow" />
+                  <span>Audio Monograph</span>
+                </div>
+                <h3 className="text-xl font-display font-bold uppercase text-[var(--text-primary)]">
+                  The Acoustic & Coding Archive
+                </h3>
+                <p className="text-xs sm:text-sm font-serif italic text-[var(--text-secondary)] mt-1 leading-relaxed">
+                  Acoustic fingerpicking, post-rock textures, and ambient minimalism that accompany early morning drafting and late-night compilation cycles.
+                </p>
               </div>
-              <h3 className="text-xl sm:text-2xl font-display font-bold uppercase text-[var(--text-primary)]">
-                The Acoustic & Coding Archive
-              </h3>
-              <p className="text-sm font-serif italic text-[var(--text-secondary)] mt-2 leading-relaxed">
-                Acoustic fingerpicking, post-rock textures, and ambient minimalism that accompany early morning drafting and late-night compilation cycles.
-              </p>
+
+              {spotify && (
+                <a
+                  href={spotify}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="LISTEN"
+                  className="inline-flex items-center justify-between p-3.5 rounded-xl border border-editorial hover:border-[var(--accent)] transition-all group bg-[var(--bg-page)]"
+                >
+                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)] group-hover:text-[var(--accent)] font-semibold">
+                    Listen on Spotify (@mrinaldo)
+                  </span>
+                  <ArrowUpRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent)]" />
+                </a>
+              )}
             </div>
 
-            {spotify && (
-              <a
-                href={spotify}
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="LISTEN"
-                className="inline-flex items-center justify-between p-4 rounded-xl border border-editorial hover:border-[var(--accent)] transition-all group bg-[var(--bg-page)]"
-              >
-                <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)] group-hover:text-[var(--accent)]">
-                  Listen on Spotify (@mrinaldo)
-                </span>
-                <ArrowUpRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent)]" />
-              </a>
-            )}
           </div>
 
         </div>
