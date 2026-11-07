@@ -104,14 +104,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           </div>
 
           {/* Right Column: Studio Portrait Frame */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 max-w-sm sm:max-w-md mx-auto lg:max-w-none w-full">
             <ImageFrame
               src="/images/bio/portrait.jpg"
+              hoverSrc="/images/bio/portrait-color.jpg"
               alt="Mrinal Dharmik — Studio Portrait"
-              caption="[FIGURE 00: MRINAL DHARMIK / STUDIO PORTRAIT]"
-              aspectRatio="aspect-[4/3] sm:aspect-[4/3]"
+              caption="[FIGURE 00: MRINAL DHARMIK / STUDIO PORTRAIT · HOVER FOR COLOR]"
+              aspectRatio="aspect-[4/5]"
               placeholderTip="Drop portrait: /public/images/bio/portrait.jpg"
-              dimensions="1200 × 900 px"
+              dimensions="1600 × 2000 px (4:5)"
               category="STUDIO PORTRAIT"
             />
           </div>

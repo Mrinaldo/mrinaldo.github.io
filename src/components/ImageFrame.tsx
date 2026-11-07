@@ -3,6 +3,7 @@ import { ImageIcon, Maximize2 } from 'lucide-react';
 
 interface ImageFrameProps {
   src: string;
+  hoverSrc?: string;
   alt: string;
   caption: string;
   aspectRatio?: string;
@@ -14,6 +15,7 @@ interface ImageFrameProps {
 
 export const ImageFrame: React.FC<ImageFrameProps> = ({
   src,
+  hoverSrc,
   alt,
   caption,
   aspectRatio = 'aspect-[16/10]',
@@ -56,10 +58,20 @@ export const ImageFrame: React.FC<ImageFrameProps> = ({
             }}
             className={`w-full h-full object-cover transition-all duration-700 ${
               hasLoaded && !hasError 
-                ? 'opacity-100 group-hover:scale-[1.02]' 
+                ? `opacity-100 group-hover:scale-[1.02] ${hoverSrc ? 'group-hover:opacity-0' : ''}` 
                 : 'opacity-0 absolute inset-0 pointer-events-none'
             }`}
           />
+
+          {/* Secondary Hover Image Layer (e.g. Color reveal on hover) */}
+          {hoverSrc && hasLoaded && !hasError && (
+            <img
+              src={hoverSrc}
+              alt={`${alt} (Color view)`}
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-[1.02] pointer-events-none"
+            />
+          )}
 
           {/* Architectural Placeholder / Blueprint state if image is missing */}
           {(!hasLoaded || hasError) && (
