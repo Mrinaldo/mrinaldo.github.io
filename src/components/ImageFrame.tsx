@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { ImageIcon, Maximize2 } from 'lucide-react';
 
 interface ImageFrameProps {
@@ -21,12 +22,21 @@ export const ImageFrame: React.FC<ImageFrameProps> = ({
   aspectRatio = 'aspect-[16/10]',
   placeholderTip,
   dimensions = '1600 × 1000 px',
-  category = 'PLATE',
+  category = 'IMAGE',
   className = ''
 }) => {
   const [hasError, setHasError] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
+
+  useEffect(() => {
+    if (!isZoomed) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsZoomed(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isZoomed]);
 
   return (
     <>
@@ -119,23 +129,33 @@ export const ImageFrame: React.FC<ImageFrameProps> = ({
       </div>
 
       {/* Lightbox Modal when Zoomed */}
-      {isZoomed && hasLoaded && !hasError && (
+      {isZoomed && hasLoaded && !hasError && createPortal(
         <div 
           onClick={() => setIsZoomed(false)}
-          className="fixed inset-0 z-[9999] bg-black/85 backdrop-blur-md p-4 sm:p-10 flex flex-col items-center justify-center cursor-zoom-out animate-fade-in"
+          className="fixed inset-0 z-[99999] bg-black/85 backdrop-blur-md p-4 sm:p-10 flex flex-col items-center justify-center cursor-zoom-out animate-fade-in"
         >
-          <div className="relative max-w-5xl max-h-[85vh] overflow-hidden rounded-2xl border border-editorial shadow-2xl">
+          <div 
+            onClick={(e) => e.stopPropagation()} 
+            className="relative max-w-5xl max-h-[85vh] overflow-hidden rounded-2xl border border-editorial shadow-2xl bg-[var(--bg-page)]"
+          >
             <img 
               src={src} 
               alt={alt} 
-              className="w-full h-full object-contain max-h-[80vh]" 
+              className="w-full h-full object-contain max-h-[75vh]" 
             />
-            <div className="p-3 bg-[var(--bg-card)] border-t border-editorial text-xs font-mono text-[var(--text-secondary)] flex justify-between">
+            <div className="p-3 bg-[var(--bg-card)] border-t border-editorial text-xs font-mono text-[var(--text-secondary)] flex justify-between items-center">
               <span>{caption}</span>
-              <span className="text-[var(--accent)] font-bold">CLICK TO CLOSE</span>
+              <button 
+                type="button"
+                onClick={() => setIsZoomed(false)}
+                className="text-[var(--accent)] font-bold uppercase tracking-wider hover:underline"
+              >
+                Close (Esc)
+              </button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

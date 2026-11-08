@@ -49,7 +49,7 @@ export const MusicSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-6 border-b border-editorial">
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">
-              Resonance / 04
+              Acoustics & Sound
             </span>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold uppercase text-[var(--text-primary)] mt-1">
               Chords & Sound
@@ -63,63 +63,101 @@ export const MusicSection: React.FC = () => {
         {/* Soundboard & Spotify Sleeve */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
-          {/* Left: Minimalist Guitar String Fretboard */}
-          <div className="lg:col-span-7 p-6 sm:p-10 rounded-2xl border border-editorial bg-[var(--bg-card)]">
-            <div className="flex items-center justify-between mb-8 pb-4 border-b border-editorial text-xs font-mono">
-              <span className="text-[var(--accent)] uppercase font-semibold">
-                Synthesized Fretboard // E2–E4 Standard
-              </span>
-              <span className="text-[var(--text-muted)] hidden sm:inline">
-                Hover & click a string to strum
-              </span>
+          {/* Left Column: Minimalist Guitar String Fretboard + Instrument Monograph */}
+          <div className="lg:col-span-7 space-y-6">
+            
+            {/* Synthesized Fretboard Card */}
+            <div className="p-6 sm:p-10 rounded-2xl border border-editorial bg-[var(--bg-card)]">
+              <div className="flex items-center justify-between mb-8 pb-4 border-b border-editorial text-xs font-mono">
+                <span className="text-[var(--accent)] uppercase font-semibold">
+                  Synthesized Fretboard // E2–E4 Standard
+                </span>
+                <span className="text-[var(--text-muted)] hidden sm:inline">
+                  Hover & click a string to strum
+                </span>
+              </div>
+
+              <div className="space-y-6 py-2">
+                {strings.map((str, idx) => {
+                  const isPlucked = activeString === idx;
+                  return (
+                    <div
+                      key={str.name}
+                      data-cursor="STRUM"
+                      onClick={() => playNote(str.freq, idx)}
+                      className="group cursor-pointer flex items-center gap-6 select-none py-1"
+                    >
+                      <div className="w-12 text-xs font-mono text-[var(--text-muted)] group-hover:text-[var(--accent)] transition-colors">
+                        {str.note} <span className="opacity-50 text-[10px]">{str.gauge}</span>
+                      </div>
+
+                      <div className="flex-1 relative flex items-center h-8">
+                        {/* String line */}
+                        <div
+                          className={`w-full rounded-full transition-all duration-150 ${
+                            isPlucked 
+                              ? 'bg-[var(--accent)] h-1 shadow-sm scale-y-150 animate-pulse' 
+                              : 'bg-editorial group-hover:bg-[var(--accent)]/70 h-[1.5px]'
+                          }`}
+                        />
+                        {isPlucked && (
+                          <span className="absolute right-0 text-xs font-mono text-[var(--accent)] font-bold animate-pulse">
+                            {str.freq.toFixed(1)} Hz ♫
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Technical Specifications */}
+              <div className="mt-8 pt-6 border-t border-editorial grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
+                <div>
+                  <span className="text-[var(--text-muted)] block text-[10px] uppercase">INSTRUMENT</span>
+                  <span className="text-[var(--text-primary)] font-medium">Fender Dreadnought</span>
+                </div>
+                <div>
+                  <span className="text-[var(--text-muted)] block text-[10px] uppercase">FINISH</span>
+                  <span className="text-[var(--text-primary)] font-medium">Vintage Sunburst</span>
+                </div>
+                <div>
+                  <span className="text-[var(--text-muted)] block text-[10px] uppercase">STRINGS</span>
+                  <span className="text-[var(--text-primary)] font-medium">Phosphor .010–.046</span>
+                </div>
+                <div>
+                  <span className="text-[var(--text-muted)] block text-[10px] uppercase">TUNING</span>
+                  <span className="text-[var(--text-primary)] font-medium">Standard E440</span>
+                </div>
+              </div>
             </div>
 
-            <div className="space-y-6 py-2">
-              {strings.map((str, idx) => {
-                const isPlucked = activeString === idx;
-                return (
-                  <div
-                    key={str.name}
-                    data-cursor="STRUM"
-                    onClick={() => playNote(str.freq, idx)}
-                    className="group cursor-pointer flex items-center gap-6 select-none py-1"
-                  >
-                    <div className="w-12 text-xs font-mono text-[var(--text-muted)] group-hover:text-[var(--accent)] transition-colors">
-                      {str.note} <span className="opacity-50 text-[10px]">{str.gauge}</span>
-                    </div>
-
-                    <div className="flex-1 relative flex items-center h-8">
-                      {/* String line */}
-                      <div
-                        className={`w-full rounded-full transition-all duration-150 ${
-                          isPlucked 
-                            ? 'bg-[var(--accent)] h-1 shadow-sm scale-y-150 animate-pulse' 
-                            : 'bg-editorial group-hover:bg-[var(--accent)]/70 h-[1.5px]'
-                        }`}
-                      />
-                      {isPlucked && (
-                        <span className="absolute right-0 text-xs font-mono text-[var(--accent)] font-bold animate-pulse">
-                          {str.freq.toFixed(1)} Hz ♫
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
+            {/* Acoustic Philosophy Monograph */}
+            <div className="p-6 sm:p-8 rounded-2xl border border-editorial bg-[var(--bg-card)] space-y-3">
+              <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">
+                Acoustic Discipline
+              </span>
+              <h3 className="text-xl font-serif italic text-[var(--text-primary)]">
+                “Six strings tuned to concert pitch: resonance without an undo buffer.”
+              </h3>
+              <p className="text-xs sm:text-sm font-sans text-[var(--text-secondary)] leading-relaxed">
+                Fingerstyle acoustic guitar serves as the tactile counterweight to systems architecture — pure physical harmonics, open-tuning overtones, muscle memory, and the warm resonance of solid tonewoods.
+              </p>
             </div>
+
           </div>
 
-          {/* Right: Guitar Rig Frame + Spotify Archive */}
+          {/* Right Column: Guitar Rig Frame + Spotify Archive */}
           <div className="lg:col-span-5 space-y-6">
             
-            {/* Guitar Photo Frame Placeholder */}
+            {/* Guitar Photo Frame */}
             <ImageFrame
               src="/images/music/guitar.jpg"
-              alt="Acoustic Setup & Guitar Rig"
-              caption="[PLATE 04.1: GUITAR RIG / FRETBOARD ARCHIVE]"
-              aspectRatio="aspect-[16/10]"
+              alt="Fender Sunburst Dreadnought Acoustic Guitar"
+              caption="FENDER SUNBURST DREADNOUGHT · ACOUSTIC RIG"
+              aspectRatio="aspect-[3/4]"
               placeholderTip="Drop photo: /public/images/music/guitar.jpg"
-              dimensions="1600 × 1000 px"
+              dimensions="1200 × 1600 px"
               category="ACOUSTIC RIG"
             />
 

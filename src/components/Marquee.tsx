@@ -2,6 +2,8 @@ import React from 'react';
 
 export const Marquee: React.FC = () => {
   const items = [
+    'DIRECTOR @ FINMECHANICS',
+    'PRODUCT JOURNEY & GROWTH',
     'SYSTEMS ARCHITECTURE',
     'LOCAL-FIRST DESKTOP',
     'INKTOBER ARTISAN',

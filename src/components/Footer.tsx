@@ -25,7 +25,7 @@ export const Footer: React.FC<FooterProps> = () => {
             Inquiries & Collaborations
           </div>
           
-          <h2 className="text-4xl sm:text-7xl lg:text-8xl font-display font-extrabold uppercase leading-[0.95] max-w-5xl">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold uppercase leading-tight max-w-3xl">
             Have a system or story in mind?
           </h2>
 
@@ -50,25 +50,20 @@ export const Footer: React.FC<FooterProps> = () => {
         </div>
 
         {/* Directory of Verified Links */}
-        <div className="py-12 border-b border-editorial grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-xs font-mono uppercase tracking-wider">
-          {SOCIAL_LINKS.map((link, idx) => (
+        <div className="py-12 border-b border-editorial grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4 text-xs font-mono uppercase tracking-wider">
+          {SOCIAL_LINKS.map((link) => (
             <a
               key={link.name}
               href={link.url}
               target="_blank"
               rel="noreferrer"
               data-cursor="OPEN"
-              className="group flex flex-col justify-between p-4 rounded-xl border border-editorial/60 hover:border-[var(--accent)] transition-all bg-[var(--bg-card)]/40 hover:bg-[var(--bg-card)]"
+              className="group flex items-center justify-between p-4 rounded-xl border border-editorial/60 hover:border-[var(--accent)] transition-all bg-[var(--bg-card)]/40 hover:bg-[var(--bg-card)]"
             >
-              <span className="text-[10px] text-[var(--text-muted)]">
-                [0{idx + 1}]
+              <span className="font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
+                {link.name}
               </span>
-              <div className="mt-4 flex items-center justify-between">
-                <span className="font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
-                  {link.name}
-                </span>
-                <ArrowUpRight className="w-3 h-3 text-[var(--text-muted)] group-hover:text-[var(--accent)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </div>
+              <ArrowUpRight className="w-3 h-3 text-[var(--text-muted)] group-hover:text-[var(--accent)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
             </a>
           ))}
         </div>

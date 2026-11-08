@@ -48,6 +48,14 @@ body {
   border-color: var(--border-color);
 }
 
+.border-editorial-subtle {
+  border-color: rgba(228, 224, 213, 0.5);
+}
+
+.border-editorial-faint {
+  border-color: rgba(228, 224, 213, 0.25);
+}
+
 /* Marquee infinite scroll */
 @keyframes marquee {
   0% { transform: translate3d(0, 0, 0); }

@@ -2,6 +2,13 @@ import { SocialLink } from '../types';
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
+    name: 'Finmechanics',
+    url: 'https://www.finmechanics.com/',
+    handle: 'Director — Product Journey & Growth',
+    icon: 'Building2',
+    description: 'Executive leadership, product journey, and enterprise financial platform growth'
+  },
+  {
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/mrinal-dharmik-393449a2/',
     handle: 'mrinal-dharmik',
@@ -9,11 +16,18 @@ export const SOCIAL_LINKS: SocialLink[] = [
     description: 'Professional journey, engineering leadership, and systems craft'
   },
   {
-    name: 'Instagram',
-    url: 'https://www.instagram.com/mrinaldo7/',
-    handle: '@mrinaldo7',
+    name: 'Substack',
+    url: 'https://mrinaldharmik.substack.com/',
+    handle: 'mrinaldharmik.substack.com',
+    icon: 'Substack',
+    description: 'Original prose, fiction, and literary craft essays'
+  },
+  {
+    name: 'Art Folio',
+    url: 'https://www.instagram.com/pretentious_joey/',
+    handle: '@pretentious_joey',
     icon: 'Instagram',
-    description: 'Visual sketches, Inktober sessions, and creative experiments'
+    description: 'Visual sketches, Inktober archives, and pen & ink studies'
   },
   {
     name: 'Goodreads',
@@ -37,12 +51,15 @@ export const SOCIAL_LINKS: SocialLink[] = [
     description: 'Open source projects, developer tooling, and code repos'
   },
   {
-    name: 'Auronova Portal',
-    url: 'https://mrinaldo.gitlab.io/',
-    handle: 'mrinaldo.gitlab.io',
-    icon: 'Globe',
-    description: 'Enterprise fintech & risk management portal'
+    name: 'Instagram',
+    url: 'https://www.instagram.com/mrinaldo7/',
+    handle: '@mrinaldo7',
+    icon: 'Instagram',
+    description: 'Personal sketchbook and visual experiments'
   }
 ];
 
 export const EMAIL_CONTACT = 'mrinal.dharmik@gmail.com';
+export const FINMECHANICS_URL = 'https://www.finmechanics.com/';
+export const SUBSTACK_URL = 'https://mrinaldharmik.substack.com/';
+export const ART_INSTAGRAM_URL = 'https://www.instagram.com/pretentious_joey/';

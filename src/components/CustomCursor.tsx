@@ -29,7 +29,7 @@ export const CustomCursor: React.FC = () => {
       if (!isVisible) setIsVisible(true);
 
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+        dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
       }
 
       // Check for hover target data-cursor attributes
@@ -56,11 +56,11 @@ export const CustomCursor: React.FC = () => {
 
     // Smooth lerp loop for the trailing ring
     const render = () => {
-      ringX += (mouseX - ringX) * 0.15;
-      ringY += (mouseY - ringY) * 0.15;
+      ringX += (mouseX - ringX) * 0.3;
+      ringY += (mouseY - ringY) * 0.3;
 
       if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
       }
 
       animId = requestAnimationFrame(render);
@@ -84,19 +84,19 @@ export const CustomCursor: React.FC = () => {
       {/* Precision Core Dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-2 h-2 -ml-1 -mt-1 rounded-full bg-[var(--accent)] pointer-events-none z-[9999] transition-opacity duration-200"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[var(--accent)] pointer-events-none z-[9999] transition-opacity duration-200"
         style={{ willChange: 'transform' }}
       />
 
       {/* Trailing Fluid Ring / Pill */}
       <div
         ref={ringRef}
-        className={`fixed top-0 left-0 -ml-5 -mt-5 rounded-full pointer-events-none z-[9998] transition-all duration-300 ease-out flex items-center justify-center ${
+        className={`fixed top-0 left-0 rounded-full pointer-events-none z-[9998] transition-[width,height,background-color,border-color,opacity,box-shadow] duration-200 ease-out flex items-center justify-center ${
           cursorText
-            ? 'w-20 h-20 -ml-10 -mt-10 bg-[var(--accent)] text-white scale-100 shadow-lg shadow-[var(--accent)]/20'
+            ? 'w-20 h-20 bg-[var(--accent)] text-white shadow-lg shadow-[var(--accent)]/20'
             : isHovered
-              ? 'w-12 h-12 -ml-6 -mt-6 border border-[var(--accent)] bg-[var(--accent)]/10 scale-125'
-              : 'w-10 h-10 border border-[var(--accent)]/40 scale-100'
+              ? 'w-12 h-12 border border-[var(--accent)] bg-[var(--accent)]/10'
+              : 'w-9 h-9 border border-[var(--accent)]/40'
         }`}
         style={{ willChange: 'transform' }}
       >

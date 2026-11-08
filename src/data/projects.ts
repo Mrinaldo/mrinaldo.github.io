@@ -5,15 +5,16 @@ export const PROJECTS: Project[] = [
     id: 'mriter',
     title: 'Mriter',
     subtitle: 'The Novelist & Publishing Studio',
-    description: 'A distraction-free desktop manuscript writing and self-publishing studio for novelists and storytellers. Engineered for deep focus with William Shunn industry-standard manuscript format export (.docx) and valid EPUB 3 ebook generation ready for Amazon KDP & Apple Books.',
-    tags: ['Electron', 'React 19', 'TypeScript', 'Tailwind CSS', 'TipTap', 'EPUB 3 / DOCX'],
+    description: 'A distraction-free desktop manuscript writing and self-publishing studio for novelists and storytellers. Engineered for deep focus with William Shunn industry-standard manuscript format export (.docx) and valid EPUB 3 ebook generation ready for Amazon KDP & Apple Books. 100% free and open source for everyone.',
+    tags: ['Free & Open Source', 'Electron', 'React 19', 'TypeScript', 'Tailwind CSS', 'TipTap', 'EPUB 3 / DOCX'],
     highlights: [
+      'Free and open source for everyone on GitHub',
       'Zen distraction-free typewriter scrolling with warm paper themes',
       'William Shunn standard manuscript (.docx) & EPUB 3 exporter',
       'Deep Story Bible & world-building lore database',
       'Outliner matrix with scene status tracking & POV synopses'
     ],
-    githubUrl: 'https://github.com/Mrinaldo',
+    githubUrl: 'https://github.com/Mrinaldo/mriter',
     category: 'desktop',
     icon: 'Feather'
   },
@@ -77,6 +78,7 @@ export const PROJECTS: Project[] = [
       'Global friends graph and comprehensive user blocking controls',
       'Robust Row Level Security (RLS) enforcement'
     ],
+    liveUrl: 'https://events-journal.vercel.app',
     githubUrl: 'https://github.com/Mrinaldo',
     category: 'web',
     icon: 'Users'

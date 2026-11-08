@@ -104,69 +104,73 @@ export const InkCanvas: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          {/* Pen sizes */}
-          <div className="flex items-center gap-1 bg-[var(--bg-page)] p-1 rounded-lg border border-editorial">
-            {[
-              { label: '0.1', size: 1.5 },
-              { label: '0.3', size: 3 },
-              { label: '0.5', size: 5 },
-              { label: '0.8', size: 8 }
-            ].map(nib => (
-              <button
-                key={nib.label}
-                data-cursor={nib.label}
-                onClick={() => setPenSize(nib.size)}
-                className={`px-2 py-0.5 rounded text-[11px] transition-colors ${
-                  penSize === nib.size 
-                    ? 'bg-[var(--accent)] text-white font-bold' 
-                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-                }`}
-              >
-                {nib.label}
-              </button>
-            ))}
+        <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {/* Pen sizes */}
+            <div className="flex items-center gap-0.5 sm:gap-1 bg-[var(--bg-page)] p-1 rounded-lg border border-editorial">
+              {[
+                { label: '0.1', size: 1.5 },
+                { label: '0.3', size: 3 },
+                { label: '0.5', size: 5 },
+                { label: '0.8', size: 8 }
+              ].map(nib => (
+                <button
+                  key={nib.label}
+                  data-cursor={nib.label}
+                  onClick={() => setPenSize(nib.size)}
+                  className={`px-1.5 sm:px-2 py-0.5 rounded text-[11px] transition-colors ${
+                    penSize === nib.size 
+                      ? 'bg-[var(--accent)] text-white font-bold' 
+                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                  }`}
+                >
+                  {nib.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Ink swatches */}
+            <div className="flex items-center gap-1.5 px-2 py-1 bg-[var(--bg-page)] rounded-lg border border-editorial">
+              {[
+                { color: '#141416', title: 'Carbon Black' },
+                { color: '#8a5026', title: 'Burnt Umber' }
+              ].map(shade => (
+                <button
+                  key={shade.color}
+                  data-cursor="COLOR"
+                  onClick={() => setInkColor(shade.color)}
+                  style={{ backgroundColor: shade.color }}
+                  className={`w-3.5 h-3.5 rounded-full border transition-transform ${
+                    inkColor === shade.color ? 'scale-125 ring-2 ring-[var(--accent)] border-white' : 'border-stone-400'
+                  }`}
+                  title={shade.title}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* Ink swatches */}
-          <div className="flex items-center gap-1.5 px-2 py-1 bg-[var(--bg-page)] rounded-lg border border-editorial">
-            {[
-              { color: '#141416', title: 'Carbon Black' },
-              { color: '#8a5026', title: 'Burnt Umber' }
-            ].map(shade => (
-              <button
-                key={shade.color}
-                data-cursor="COLOR"
-                onClick={() => setInkColor(shade.color)}
-                style={{ backgroundColor: shade.color }}
-                className={`w-3.5 h-3.5 rounded-full border transition-transform ${
-                  inkColor === shade.color ? 'scale-125 ring-2 ring-[var(--accent)] border-white' : 'border-stone-400'
-                }`}
-                title={shade.title}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={clearCanvas}
-            data-cursor="CLEAR"
-            className="p-1.5 text-[var(--text-secondary)] hover:text-[var(--accent)] rounded-lg border border-editorial transition-colors"
-            title="Clear canvas"
-          >
-            <RefreshCw className="w-3.5 h-3.5" />
-          </button>
-
-          {hasDrawn && (
+          <div className="flex items-center gap-1.5">
             <button
-              onClick={downloadCanvas}
-              data-cursor="SAVE"
-              className="flex items-center gap-1 px-3 py-1 bg-[var(--accent)] text-white rounded-lg text-xs font-mono font-bold hover:opacity-90 transition-all shadow-sm"
-              title="Save drawing"
+              onClick={clearCanvas}
+              data-cursor="CLEAR"
+              className="p-1.5 text-[var(--text-secondary)] hover:text-[var(--accent)] rounded-lg border border-editorial transition-colors bg-[var(--bg-page)]"
+              title="Clear canvas"
             >
-              <Download className="w-3.5 h-3.5" />
-              <span>Save</span>
+              <RefreshCw className="w-3.5 h-3.5" />
             </button>
-          )}
+
+            {hasDrawn && (
+              <button
+                onClick={downloadCanvas}
+                data-cursor="SAVE"
+                className="flex items-center gap-1 px-3 py-1 bg-[var(--accent)] text-white rounded-lg text-xs font-mono font-bold hover:opacity-90 transition-all shadow-sm shrink-0"
+                title="Save drawing"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Save</span>
+              </button>
+            )}
+          </div>
         </div>
       </div>
 

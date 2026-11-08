@@ -3,9 +3,9 @@ import { PortfolioMode } from '../types';
 import { SOCIAL_LINKS, EMAIL_CONTACT } from '../data/socials';
 import { 
   X, Mail, Check, Copy, ExternalLink, Send, 
-  BookOpen, Globe, Sparkles 
+  BookOpen, Sparkles, Building2 
 } from 'lucide-react';
-import { GithubIcon, LinkedinIcon, InstagramIcon, SpotifyIcon } from './BrandIcons';
+import { GithubIcon, LinkedinIcon, InstagramIcon, SpotifyIcon, SubstackIcon } from './BrandIcons';
 import confetti from 'canvas-confetti';
 
 interface ContactModalProps {
@@ -43,12 +43,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
   const getSocialIcon = (name: string) => {
     switch (name) {
+      case 'Finmechanics': return <Building2 className="w-4 h-4 text-[var(--accent)]" />;
       case 'LinkedIn': return <LinkedinIcon className="w-4 h-4 text-[var(--accent)]" />;
+      case 'Substack': return <SubstackIcon className="w-4 h-4 text-[var(--accent)]" />;
+      case 'Art Folio': return <InstagramIcon className="w-4 h-4 text-[var(--accent)]" />;
       case 'Instagram': return <InstagramIcon className="w-4 h-4 text-[var(--accent)]" />;
       case 'Goodreads': return <BookOpen className="w-4 h-4 text-[var(--accent)]" />;
       case 'Spotify': return <SpotifyIcon className="w-4 h-4 text-[var(--accent)]" />;
       case 'GitHub': return <GithubIcon className="w-4 h-4 text-[var(--accent)]" />;
-      case 'Auronova Portal': return <Globe className="w-4 h-4 text-[var(--accent)]" />;
       default: return <ExternalLink className="w-4 h-4" />;
     }
   };
