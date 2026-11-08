@@ -104,8 +104,8 @@ export const InkCanvas: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
-          <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 w-full sm:w-auto justify-start sm:justify-end">
+          <div className="flex flex-wrap items-center gap-2">
             {/* Pen sizes */}
             <div className="flex items-center gap-0.5 sm:gap-1 bg-[var(--bg-page)] p-1 rounded-lg border border-editorial">
               {[
@@ -149,7 +149,7 @@ export const InkCanvas: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 ml-auto sm:ml-0">
             <button
               onClick={clearCanvas}
               data-cursor="CLEAR"

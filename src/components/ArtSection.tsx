@@ -158,18 +158,18 @@ export const ArtSection: React.FC = () => {
                 Drawing with graphite and pigment liners removes the safety net of undo buffers. It forces a deliberate pacing: observing negative space, calibrating hatching density, and letting raw accidents become integral to the texture.
               </p>
 
-              <div className="pt-4 border-t border-editorial text-xs font-mono text-[var(--text-muted)] space-y-1.5">
-                <div className="flex justify-between">
-                  <span>MEDIUM:</span>
-                  <span className="text-[var(--text-primary)] font-medium">Sakura Micron 0.05mm–0.8mm & Graphite (2B–6B)</span>
+              <div className="pt-4 border-t border-editorial text-xs font-mono text-[var(--text-muted)] space-y-2">
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4 pb-2 border-b border-editorial/60">
+                  <span className="uppercase text-[var(--text-muted)] tracking-wider shrink-0">MEDIUM:</span>
+                  <span className="text-[var(--text-primary)] font-medium sm:text-right">Sakura Micron 0.05mm–0.8mm & Graphite (2B–6B)</span>
                 </div>
-                <div className="flex justify-between">
-                  <span>PAPER:</span>
-                  <span className="text-[var(--text-primary)] font-medium">Arches 300gsm Grain Fin & Heavyweight Cartridge</span>
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4 pb-2 border-b border-editorial/60">
+                  <span className="uppercase text-[var(--text-muted)] tracking-wider shrink-0">PAPER:</span>
+                  <span className="text-[var(--text-primary)] font-medium sm:text-right">Arches 300gsm Grain Fin & Heavyweight Cartridge</span>
                 </div>
-                <div className="flex justify-between">
-                  <span>EXHIBITION:</span>
-                  <span className="text-[var(--text-primary)] font-medium">Observational Life Studies & Inktober Series</span>
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4 pb-1">
+                  <span className="uppercase text-[var(--text-muted)] tracking-wider shrink-0">EXHIBITION:</span>
+                  <span className="text-[var(--text-primary)] font-medium sm:text-right">Observational Life Studies & Inktober Series</span>
                 </div>
               </div>
             </div>

@@ -1,7 +1,8 @@
 import React from 'react';
 import { AUTHOR_STUDIES, MURAKAMI_PHILOSOPHY } from '../data/reading';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, BookOpen } from 'lucide-react';
 import { SOCIAL_LINKS, SUBSTACK_URL } from '../data/socials';
+import { ImageFrame } from './ImageFrame';
 
 export const ReadingSection: React.FC = () => {
   const goodreads = SOCIAL_LINKS.find(s => s.name === 'Goodreads')?.url;
@@ -126,30 +127,67 @@ export const ReadingSection: React.FC = () => {
           ))}
         </div>
 
-        {/* External Literary Registers */}
-        <div className="mt-12 pt-6 border-t border-editorial flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono uppercase tracking-wider">
-          <a
-            href={SUBSTACK_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 text-[var(--accent)] hover:underline font-semibold"
-          >
-            <span>mrinaldharmik.substack.com</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
+        {/* Goodreads Shelf & Physical Library Archive */}
+        {goodreads && (
+          <div className="mt-16 p-6 sm:p-10 md:p-12 rounded-3xl border border-editorial bg-[var(--bg-card)]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Physical Bookshelf Photo */}
+              <div className="lg:col-span-5">
+                <ImageFrame
+                  src="/images/reading/goodreads-shelf.jpg"
+                  alt="Literary Study & Kobo Reading Annotation"
+                  caption="THE READING REGISTER // LITERARY STUDY & ACTIVE ANNOTATION"
+                  aspectRatio="aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4]"
+                  dimensions="1600 × 2133 px"
+                  category="LITERARY CANON"
+                />
+              </div>
 
-          {goodreads && (
-            <a
-              href={goodreads}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:underline transition-colors"
-            >
-              <span>Reading Register on Goodreads</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
-          )}
-        </div>
+              {/* Editorial Details & Goodreads CTA */}
+              <div className="lg:col-span-7 space-y-6">
+                <div className="space-y-3">
+                  <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>Living Archive & Reading Ledger</span>
+                  </div>
+                  <h3 className="text-2xl sm:text-4xl font-display font-bold uppercase text-[var(--text-primary)]">
+                    The Reading Register
+                  </h3>
+                  <p className="text-sm sm:text-base font-serif italic text-[var(--text-secondary)] leading-relaxed">
+                    Nineteenth-century novels, Russian translations, psychological realism, and contemporary prose. Every active study, highlighted passage, and finished volume is tracked on my personal Goodreads register.
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-xl border border-editorial bg-[var(--bg-page)] space-y-2">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 text-xs font-mono">
+                    <span className="text-[var(--text-muted)] uppercase">LITERARY FOCUS:</span>
+                    <span className="text-[var(--text-primary)] font-medium">Nineteenth-Century Realism · Psychological Depth</span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 text-xs font-mono">
+                    <span className="text-[var(--text-muted)] uppercase">CURRENT STATUS:</span>
+                    <span className="text-[var(--accent)] font-medium">Active Reading & Annotating</span>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <span className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider">
+                    Connected Goodreads Register
+                  </span>
+                  <a
+                    href={goodreads}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="GOODREADS"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[var(--accent)] text-white text-xs font-mono uppercase tracking-wider font-bold hover:opacity-90 transition-all shadow-sm"
+                  >
+                    <span>Explore Reading Register</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
     </section>

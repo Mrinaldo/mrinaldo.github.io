@@ -16,14 +16,15 @@ export const PROJECTS: Project[] = [
     ],
     githubUrl: 'https://github.com/Mrinaldo/mriter',
     category: 'desktop',
-    icon: 'Feather'
+    icon: 'Feather',
+    status: 'released'
   },
   {
     id: 'mrews',
     title: 'Mrews',
     subtitle: 'Knowledge-First Curated News Feed',
-    description: 'An intelligent news aggregator transforming chaotic information into an engaging, visual Instagram-style feed. Powered by dynamic multi-factor affinity scoring that balances user dwell time, interaction vectors, and recency decay to serve high-density bullet summaries.',
-    tags: ['Next.js 15', 'React 19', 'Supabase', 'PostgreSQL', 'RLS', 'Recommendation Engine'],
+    description: 'An intelligent news aggregator transforming chaotic information into an engaging, visual Instagram-style feed. Powered by dynamic multi-factor affinity scoring that balances user dwell time, interaction vectors, and recency decay to serve high-density bullet summaries. Currently in active development.',
+    tags: ['Coming Soon', 'Next.js 15', 'React 19', 'Supabase', 'PostgreSQL', 'RLS', 'Recommendation Engine'],
     highlights: [
       'Multi-factor affinity ranking (dwell time, clicks, bookmarks, recency decay)',
       'High-density bullet summary cards for rapid knowledge absorption',
@@ -32,14 +33,15 @@ export const PROJECTS: Project[] = [
     ],
     githubUrl: 'https://github.com/Mrinaldo',
     category: 'web',
-    icon: 'Sparkles'
+    icon: 'Sparkles',
+    status: 'coming-soon'
   },
   {
     id: 'mreader',
     title: 'Mreader',
     subtitle: 'Distraction-Free E-Reader Engine',
-    description: 'A minimalist Chromium extension and web e-reader engineered to provide an immaculate reading sanctuary for long-form literature. Features Foliate-js parsing engine and Dexie IndexedDB for instant, zero-latency offline book caching.',
-    tags: ['React 19', 'Foliate-js', 'Dexie IndexedDB', 'Vite', 'Tailwind v4'],
+    description: 'A minimalist Chromium extension and web e-reader engineered to provide an immaculate reading sanctuary for long-form literature. Features Foliate-js parsing engine and Dexie IndexedDB for instant, zero-latency offline book caching. Currently in active development.',
+    tags: ['Coming Soon', 'React 19', 'Foliate-js', 'Dexie IndexedDB', 'Vite', 'Tailwind v4'],
     highlights: [
       'Offline-first architecture powered by IndexedDB',
       'Standards-compliant EPUB reflow & pagination',
@@ -48,39 +50,42 @@ export const PROJECTS: Project[] = [
     ],
     githubUrl: 'https://github.com/Mrinaldo',
     category: 'extension',
-    icon: 'BookOpen'
+    icon: 'BookOpen',
+    status: 'coming-soon'
   },
   {
     id: 'auronova',
     title: 'Auronova Consulting',
-    subtitle: 'Enterprise Risk & Financial Analytics Portal',
-    description: 'Production web platform developed for a specialized analytics and risk management consultancy in the banking and fintech sectors. Highlights deep domain frameworks including Basel II/III compliance, IFRS 9, FRTB, credit risk modeling, and RAROC systems.',
-    tags: ['Corporate Analytics', 'Fintech', 'Risk Modeling', 'Responsive Architecture'],
+    subtitle: 'Freelance Web Design & Motion UI Experience',
+    description: 'A freelance web design and development project crafted for Auronova Consulting. Designed the complete corporate website featuring extensive use of lightweight Lottie vector animations, bespoke typographic hierarchy, and responsive UI/UX to create an engaging visual narrative around their financial risk consulting domains.',
+    tags: ['Freelance Web Design', 'Lottie Animations', 'UI/UX Design', 'Visual Storytelling', 'Frontend Development'],
     highlights: [
-      'Interactive risk modeling & analytics domain index',
-      'Comprehensive regulatory compliance framework mapping',
-      'Clean enterprise navigation and high-fidelity presentation',
-      'Live deployment accessible globally'
+      'Heavy integration of Lottie vector animations for dynamic visual engagement',
+      'Bespoke UI/UX design showcasing financial risk and compliance consulting',
+      'Interactive visual presentation of complex banking frameworks with high polish',
+      'Live deployment accessible globally at mrinaldo.gitlab.io'
     ],
     liveUrl: 'https://mrinaldo.gitlab.io/',
-    category: 'enterprise',
-    icon: 'Briefcase'
+    category: 'web',
+    icon: 'Briefcase',
+    status: 'live'
   },
   {
     id: 'events-journal',
     title: 'EventsJournal',
-    subtitle: 'Event-Driven Social Community Platform',
-    description: 'A Next.js & Supabase social platform engineered for private events and communities. Features host tier administration, dynamic multi-photo social feeds with engagement ranking, friend relationship graphs, and row-level privacy controls.',
-    tags: ['Next.js', 'Supabase', 'PostgreSQL Triggers', 'Tailwind CSS', 'Social Graph'],
+    subtitle: 'Rapid Social Community Prototype',
+    description: 'Conceived during a conversation with a friend and rapidly prototyped into a fully functional web platform for private events and communities. Features host tier administration, dynamic multi-photo event feeds with engagement ranking, and row-level privacy controls. Currently iterating on UI refinements and engineering a dedicated mobile application.',
+    tags: ['Rapid Prototype', 'Next.js', 'Supabase', 'Mobile App in Progress', 'PostgreSQL Triggers', 'Tailwind CSS'],
     highlights: [
-      'Social feeds supporting multi-photo posts with SQL-based traction ranking',
-      'Unified host store with tiered guest limits and join-request queues',
-      'Global friends graph and comprehensive user blocking controls',
-      'Robust Row Level Security (RLS) enforcement'
+      'Rapidly prototyped from idea to live full-stack web application',
+      'Multi-photo event feeds with SQL traction ranking triggers',
+      'Granular Row-Level Security (RLS) and event guest management',
+      'Upcoming roadmap: UI overhaul and dedicated functional mobile application'
     ],
     liveUrl: 'https://events-journal.vercel.app',
     githubUrl: 'https://github.com/Mrinaldo',
     category: 'web',
-    icon: 'Users'
+    icon: 'Users',
+    status: 'live'
   }
 ];

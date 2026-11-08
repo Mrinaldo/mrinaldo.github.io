@@ -62,12 +62,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         onClick={onClose} 
       />
 
-      <div className="relative w-full max-w-2xl rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-primary)] shadow-2xl overflow-hidden z-10 transition-all">
+      <div className="relative w-full max-w-2xl max-h-[82dvh] sm:max-h-[88vh] rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--text-primary)] shadow-2xl overflow-hidden z-10 flex flex-col transition-all my-auto">
         {/* Top Header */}
-        <div className="px-6 py-4 border-b border-[var(--border-color)] bg-[var(--bg-card-muted)] flex items-center justify-between text-xs font-mono text-[var(--text-secondary)]">
+        <div className="px-4 py-3 sm:px-6 sm:py-4 border-b border-[var(--border-color)] bg-[var(--bg-card-muted)] flex items-center justify-between text-xs font-mono text-[var(--text-secondary)] shrink-0">
           <div className="flex items-center gap-2">
             <Mail className="w-4 h-4 text-[var(--accent)]" />
-            <span className="font-semibold text-sm text-[var(--text-primary)]">Initiate Communication // Mrinal Dharmik</span>
+            <span className="font-semibold text-xs sm:text-sm text-[var(--text-primary)]">Initiate Communication // Mrinal Dharmik</span>
           </div>
           <button 
             onClick={onClose}
@@ -78,10 +78,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 sm:p-8 space-y-6 max-h-[85vh] overflow-y-auto">
+        <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 overflow-y-auto max-h-[70dvh] sm:max-h-[76vh]">
           
           {/* Email Direct Box */}
-          <div className="p-4 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card-muted)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="p-3 sm:p-4 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card-muted)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
             <div>
               <div className="text-xs uppercase font-mono text-[var(--text-muted)] font-semibold">
                 Direct Email:
@@ -94,7 +94,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             <div className="flex items-center gap-2 w-full sm:w-auto">
               <button
                 onClick={copyEmail}
-                className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium border transition-all ${
+                className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium border transition-all ${
                   copied
                     ? 'bg-emerald-600 text-white border-emerald-500'
                     : 'bg-[var(--bg-card)] text-[var(--text-primary)] border-[var(--border-color)] hover:border-[var(--accent)]'
@@ -106,7 +106,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
               <a
                 href={`mailto:${EMAIL_CONTACT}`}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium bg-[var(--accent)] text-[var(--accent-fg)] hover:opacity-90 transition-all shadow-sm"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-[var(--accent)] text-[var(--accent-fg)] hover:opacity-90 transition-all shadow-sm"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>Open Mailer</span>
@@ -115,7 +115,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           </div>
 
           {/* Typewriter Scratchpad / Fast Message Form */}
-          <form onSubmit={handleSendDraft} className="space-y-3">
+          <form onSubmit={handleSendDraft} className="space-y-2.5 sm:space-y-3">
             <label className="block text-xs font-semibold uppercase tracking-wider font-mono text-[var(--text-secondary)]">
               Draft a Note directly to Mrinal:
             </label>
@@ -123,14 +123,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               value={noteText}
               onChange={(e) => setNoteText(e.target.value)}
               placeholder="Hi Mrinal, I came across your systems and artwork..."
-              rows={3}
-              className="w-full p-3.5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card-muted)] text-[var(--text-primary)] focus:border-[var(--accent)] outline-none transition-colors text-sm font-sans"
+              rows={2}
+              className="w-full p-3 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card-muted)] text-[var(--text-primary)] focus:border-[var(--accent)] outline-none transition-colors text-sm font-sans"
             />
             <div className="flex justify-end">
               <button
                 type="submit"
                 disabled={!noteText.trim()}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all ${
+                className={`flex items-center gap-2 px-4 py-1.5 sm:py-2 rounded-xl text-xs font-mono font-bold transition-all ${
                   noteText.trim()
                     ? 'bg-[var(--accent)] text-[var(--accent-fg)] hover:opacity-90 cursor-pointer shadow-sm'
                     : 'bg-[var(--bg-card-muted)] text-[var(--text-muted)] border border-[var(--border-color)] cursor-not-allowed'
@@ -144,17 +144,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
           {/* Social Channels Matrix */}
           <div>
-            <div className="text-xs uppercase font-mono text-[var(--text-muted)] font-semibold mb-3">
+            <div className="text-xs uppercase font-mono text-[var(--text-muted)] font-semibold mb-2.5 sm:mb-3">
               Verified Social Channels & Presence:
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
               {SOCIAL_LINKS.map((link) => (
                 <a
                   key={link.name}
                   href={link.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-3 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card-muted)] hover:border-[var(--accent)] flex items-center justify-between gap-3 transition-all"
+                  className="p-2.5 sm:p-3 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card-muted)] hover:border-[var(--accent)] flex items-center justify-between gap-3 transition-all"
                 >
                   <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-[var(--bg-card)] border border-[var(--border-color)]">

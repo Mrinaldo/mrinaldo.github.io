@@ -56,6 +56,16 @@ body {
   border-color: rgba(228, 224, 213, 0.25);
 }
 
+/* Touch devices & mobile: show color image by default since hover is unavailable */
+@media (hover: none), (pointer: coarse) {
+  .touch-show-color {
+    opacity: 1 !important;
+  }
+  .touch-hide-base {
+    opacity: 0 !important;
+  }
+}
+
 /* Marquee infinite scroll */
 @keyframes marquee {
   0% { transform: translate3d(0, 0, 0); }

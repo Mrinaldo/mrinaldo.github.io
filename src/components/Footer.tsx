@@ -16,24 +16,24 @@ export const Footer: React.FC<FooterProps> = () => {
   };
 
   return (
-    <footer id="contact" className="py-24 sm:py-36 bg-[var(--bg-page)] text-[var(--text-primary)]">
+    <footer id="contact" className="pt-12 sm:pt-16 pb-8 sm:pb-12 bg-[var(--bg-page)] text-[var(--text-primary)]">
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
         
         {/* Giant Direct Contact Prompt */}
-        <div className="pb-20 border-b border-editorial space-y-6">
+        <div className="pb-10 sm:pb-12 border-b border-editorial space-y-4 sm:space-y-5">
           <div className="text-xs font-mono uppercase tracking-widest text-[var(--accent)] font-semibold">
             Inquiries & Collaborations
           </div>
           
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold uppercase leading-tight max-w-3xl">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold uppercase leading-tight max-w-2xl">
             Have a system or story in mind?
           </h2>
 
-          <div className="pt-4 flex flex-wrap items-center gap-4">
+          <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
             <a
               href={`mailto:${EMAIL_CONTACT}`}
               data-cursor="EMAIL"
-              className="text-2xl sm:text-4xl lg:text-5xl font-serif italic text-[var(--accent)] hover:underline decoration-1 underline-offset-8 transition-all"
+              className="text-xl sm:text-3xl md:text-4xl font-serif italic text-[var(--accent)] hover:underline decoration-1 underline-offset-6 transition-all"
             >
               {EMAIL_CONTACT}
             </a>
@@ -41,7 +41,7 @@ export const Footer: React.FC<FooterProps> = () => {
             <button
               onClick={copyEmail}
               data-cursor={copied ? "COPIED" : "COPY"}
-              className="px-3.5 py-1.5 rounded-full border border-editorial hover:border-[var(--accent)] text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)] hover:text-[var(--text-primary)] flex items-center gap-1.5 transition-colors"
+              className="px-3 py-1.5 rounded-full border border-editorial hover:border-[var(--accent)] text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)] hover:text-[var(--text-primary)] flex items-center gap-1.5 transition-colors"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{copied ? 'Copied' : 'Copy'}</span>
@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = () => {
         </div>
 
         {/* Directory of Verified Links */}
-        <div className="py-12 border-b border-editorial grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4 text-xs font-mono uppercase tracking-wider">
+        <div className="py-8 sm:py-10 border-b border-editorial grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 text-xs font-mono uppercase tracking-wider">
           {SOCIAL_LINKS.map((link) => (
             <a
               key={link.name}
@@ -58,7 +58,7 @@ export const Footer: React.FC<FooterProps> = () => {
               target="_blank"
               rel="noreferrer"
               data-cursor="OPEN"
-              className="group flex items-center justify-between p-4 rounded-xl border border-editorial/60 hover:border-[var(--accent)] transition-all bg-[var(--bg-card)]/40 hover:bg-[var(--bg-card)]"
+              className="group flex items-center justify-between px-4 py-3 sm:py-3.5 rounded-xl border border-editorial/60 hover:border-[var(--accent)] transition-all bg-[var(--bg-card)]/40 hover:bg-[var(--bg-card)]"
             >
               <span className="font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
                 {link.name}
@@ -69,7 +69,7 @@ export const Footer: React.FC<FooterProps> = () => {
         </div>
 
         {/* Bottom Metadata Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono text-[var(--text-muted)]">
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono text-[var(--text-muted)]">
           <div>
             © {new Date().getFullYear()} Mrinal Dharmik. All code, prose, and visual studies original.
           </div>

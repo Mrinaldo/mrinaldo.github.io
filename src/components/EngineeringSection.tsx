@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PROJECTS } from '../data/projects';
 import { ArrowUpRight, Plus, Minus, Check, Code2, Sparkles, Terminal } from 'lucide-react';
 import { ImageFrame } from './ImageFrame';
+import { ComingSoonFrame } from './ComingSoonFrame';
 
 export const EngineeringSection: React.FC = () => {
   const [activeProject, setActiveProject] = useState<string | null>(PROJECTS[0].id);
@@ -11,10 +12,10 @@ export const EngineeringSection: React.FC = () => {
   const getMetricBadge = (id: string) => {
     switch (id) {
       case 'mriter': return 'Free & Open Source / William Shunn DOCX';
-      case 'mrews': return 'Multi-Factor Vector Affinity Engine';
-      case 'mreader': return 'Foliate.js / IndexedDB 0ms Latency';
-      case 'auronova': return 'Basel III & IFRS 9 Production Portal';
-      case 'events-journal': return 'PostgreSQL Triggers & Social Graph';
+      case 'mrews': return 'In The Works // Coming Soon';
+      case 'mreader': return 'In The Works // Coming Soon';
+      case 'auronova': return 'Freelance Web Design / Lottie Motion UI';
+      case 'events-journal': return 'Rapid Full-Stack Prototype / Mobile in Progress';
       default: return 'Architectural Build';
     }
   };
@@ -82,23 +83,29 @@ export const EngineeringSection: React.FC = () => {
                 key={project.id}
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
-                className={`group py-8 sm:py-10 transition-all duration-300 ${
+                className={`group py-5 sm:py-7 md:py-8 transition-all duration-300 ${
                   isHovered ? 'bg-[var(--accent-subtle)] px-4 sm:px-6 -mx-4 sm:-mx-6 rounded-2xl' : ''
-                }`}
+                } ${isOpen ? 'pb-8 sm:pb-10' : ''}`}
               >
                 {/* Main Row Bar */}
                 <div 
                   data-cursor={isOpen ? "CLOSE" : "EXPAND"}
                   onClick={() => setActiveProject(isOpen ? null : project.id)}
-                  className="cursor-pointer flex flex-col lg:flex-row lg:items-center justify-between gap-4 select-none"
+                  className="cursor-pointer flex items-center justify-between gap-4 select-none"
                 >
-                  <div>
-                    <div className="flex items-center gap-3">
-                      <h3 className="text-2xl sm:text-4xl lg:text-5xl font-display font-bold uppercase text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
+                  <div className="min-w-0 pr-2">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                      <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold uppercase text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
                         {project.title}
                       </h3>
+                      {project.status === 'coming-soon' && (
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 font-bold shrink-0">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
+                          <span>Coming Soon</span>
+                        </span>
+                      )}
                       {/* Hover Metric Pill */}
-                      <span className={`hidden sm:inline-block text-[10px] font-mono uppercase px-2 py-0.5 rounded-full border border-editorial text-[var(--accent)] transition-opacity duration-300 ${
+                      <span className={`hidden md:inline-block text-[10px] font-mono uppercase px-2 py-0.5 rounded-full border border-editorial text-[var(--accent)] transition-opacity duration-300 ${
                         isHovered ? 'opacity-100' : 'opacity-0'
                       }`}>
                         {getMetricBadge(project.id)}
@@ -109,13 +116,14 @@ export const EngineeringSection: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-6 lg:gap-10 self-end lg:self-auto">
-                    <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-muted)] hidden sm:inline-block">
+                  <div className="flex items-center gap-3 sm:gap-6 lg:gap-10 shrink-0">
+                    <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-muted)] hidden md:inline-block">
                       {project.category}
                     </span>
 
                     <button
-                      className="w-10 h-10 rounded-full border border-editorial group-hover:border-[var(--accent)] flex items-center justify-center text-[var(--text-primary)] transition-all group-hover:scale-110"
+                      type="button"
+                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-editorial group-hover:border-[var(--accent)] flex items-center justify-center text-[var(--text-primary)] transition-all group-hover:scale-105 shrink-0"
                       title={isOpen ? "Collapse" : "Expand details"}
                     >
                       {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
@@ -125,7 +133,7 @@ export const EngineeringSection: React.FC = () => {
 
                 {/* Expanded Architectural Dossier */}
                 {isOpen && (
-                  <div className="mt-6 pt-6 border-t border-editorial-subtle space-y-8 animate-fade-in">
+                  <div className="mt-6 pt-6 border-t border-editorial-subtle space-y-6 sm:space-y-8 animate-fade-in">
                     
                     {/* Top Row: Description + Highlights */}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -166,7 +174,14 @@ export const EngineeringSection: React.FC = () => {
                           </ul>
                         </div>
 
-                        <div className="pt-4 border-t border-editorial flex items-center gap-3">
+                        <div className="pt-4 border-t border-editorial flex flex-wrap items-center gap-3">
+                          {project.status === 'coming-soon' && (
+                            <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-[var(--accent)]/30 bg-[var(--accent-subtle)] text-[var(--accent)] text-xs font-mono uppercase tracking-wider font-semibold">
+                              <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+                              <span>In Active Development // Coming Soon</span>
+                            </div>
+                          )}
+
                           {project.liveUrl && (
                             <a
                               href={project.liveUrl}
@@ -196,46 +211,55 @@ export const EngineeringSection: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Bottom Row: Interface Screenshot Placeholder Frame */}
+                    {/* Bottom Row: Interface Screenshot or Coming Soon Blueprint */}
                     <div className="pt-2 space-y-3">
-                      {project.id === 'mriter' && (
-                        <div className="flex flex-wrap items-center justify-between gap-3">
-                          <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-muted)]">
-                            Studio Module Views:
-                          </span>
-                          <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-[var(--bg-card)] border border-editorial">
-                            {[
-                              { id: 'write', label: 'Write Canvas' },
-                              { id: 'outline', label: 'Outliner' },
-                              { id: 'bible', label: 'Story Bible' },
-                              { id: 'publish', label: 'Publishing (EPUB 3 / DOCX)' },
-                            ].map((tab) => (
-                              <button
-                                key={tab.id}
-                                type="button"
-                                onClick={() => setMriterTab(tab.id as 'write' | 'outline' | 'bible' | 'publish')}
-                                className={`px-3 py-1 rounded-lg text-xs font-mono tracking-wider transition-all cursor-pointer ${
-                                  mriterTab === tab.id
-                                    ? 'bg-[var(--accent)] text-white font-bold shadow-sm'
-                                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-page)]'
-                                }`}
-                              >
-                                {tab.label}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      )}
+                      {project.status === 'coming-soon' ? (
+                        <ComingSoonFrame
+                          project={project}
+                          aspectRatio="aspect-[16/10]"
+                        />
+                      ) : (
+                        <>
+                          {project.id === 'mriter' && (
+                            <div className="flex flex-wrap items-center justify-between gap-3">
+                              <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-muted)]">
+                                Studio Module Views:
+                              </span>
+                              <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-[var(--bg-card)] border border-editorial">
+                                {[
+                                  { id: 'write', label: 'Write Canvas' },
+                                  { id: 'outline', label: 'Outliner' },
+                                  { id: 'bible', label: 'Story Bible' },
+                                  { id: 'publish', label: 'Publishing (EPUB 3 / DOCX)' },
+                                ].map((tab) => (
+                                  <button
+                                    key={tab.id}
+                                    type="button"
+                                    onClick={() => setMriterTab(tab.id as 'write' | 'outline' | 'bible' | 'publish')}
+                                    className={`px-3 py-1 rounded-lg text-xs font-mono tracking-wider transition-all cursor-pointer ${
+                                      mriterTab === tab.id
+                                        ? 'bg-[var(--accent)] text-white font-bold shadow-sm'
+                                        : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-page)]'
+                                    }`}
+                                  >
+                                    {tab.label}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          )}
 
-                      <ImageFrame
-                        src={getProjectImagePath(project.id)}
-                        alt={`${project.title} — System Interface Screenshot`}
-                        caption={project.id === 'mriter' ? getMriterCaption() : `${project.title.toUpperCase()} · SYSTEM INTERFACE`}
-                        aspectRatio="aspect-[16/10]"
-                        placeholderTip={`Drop screenshot into: /public${getProjectImagePath(project.id)}`}
-                        dimensions="1600 × 1000 px"
-                        category="PROJECT INTERFACE SPEC"
-                      />
+                          <ImageFrame
+                            src={getProjectImagePath(project.id)}
+                            alt={`${project.title} — System Interface Screenshot`}
+                            caption={project.id === 'mriter' ? getMriterCaption() : `${project.title.toUpperCase()} · SYSTEM INTERFACE`}
+                            aspectRatio="aspect-[16/10]"
+                            placeholderTip={`Drop screenshot into: /public${getProjectImagePath(project.id)}`}
+                            dimensions="1600 × 1000 px"
+                            category="PROJECT INTERFACE SPEC"
+                          />
+                        </>
+                      )}
                     </div>
 
                   </div>

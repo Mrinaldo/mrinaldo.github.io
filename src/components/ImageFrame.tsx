@@ -57,7 +57,7 @@ export const ImageFrame: React.FC<ImageFrameProps> = ({
           <span className="absolute bottom-2 left-2 text-[10px] font-mono text-[var(--accent)] select-none opacity-60 z-10">+</span>
           <span className="absolute bottom-2 right-2 text-[10px] font-mono text-[var(--accent)] select-none opacity-60 z-10">+</span>
 
-          {/* Actual Image Tag */}
+          {/* Base image (e.g. Black & White portrait) */}
           <img
             src={src}
             alt={alt}
@@ -68,18 +68,20 @@ export const ImageFrame: React.FC<ImageFrameProps> = ({
             }}
             className={`w-full h-full object-cover transition-all duration-700 ${
               hasLoaded && !hasError 
-                ? `opacity-100 group-hover:scale-[1.02] ${hoverSrc ? 'group-hover:opacity-0' : ''}` 
+                ? `opacity-100 group-hover:scale-[1.02] ${
+                    hoverSrc ? 'max-md:opacity-0 touch-hide-base md:group-hover:opacity-0' : ''
+                  }` 
                 : 'opacity-0 absolute inset-0 pointer-events-none'
             }`}
           />
 
-          {/* Secondary Hover Image Layer (e.g. Color reveal on hover) */}
+          {/* Secondary Color Image Layer (visible by default on touch/mobile, and on hover on desktop) */}
           {hoverSrc && hasLoaded && !hasError && (
             <img
               src={hoverSrc}
               alt={`${alt} (Color view)`}
               aria-hidden="true"
-              className="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-[1.02] pointer-events-none"
+              className="absolute inset-0 w-full h-full object-cover transition-all duration-700 max-md:opacity-100 touch-show-color md:opacity-0 md:group-hover:opacity-100 md:group-hover:scale-[1.02] pointer-events-none"
             />
           )}
 
@@ -139,7 +141,7 @@ export const ImageFrame: React.FC<ImageFrameProps> = ({
             className="relative max-w-5xl max-h-[85vh] overflow-hidden rounded-2xl border border-editorial shadow-2xl bg-[var(--bg-page)]"
           >
             <img 
-              src={src} 
+              src={hoverSrc || src} 
               alt={alt} 
               className="w-full h-full object-contain max-h-[75vh]" 
             />

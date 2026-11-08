@@ -54,7 +54,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           
           <div className="lg:col-span-7 space-y-6">
             <p className="text-lg sm:text-2xl font-serif leading-relaxed text-[var(--text-primary)] font-light">
-              Director at <a href="https://www.finmechanics.com/" target="_blank" rel="noreferrer" data-cursor="VISIT" className="font-normal text-[var(--text-primary)] underline decoration-[var(--accent)]/50 underline-offset-4 hover:decoration-[var(--accent)] hover:text-[var(--accent)] transition-colors">Finmechanics</a> where I look at product journey and growth. Systems architect engineering enterprise financial platforms, local-first environments, and intelligent data systems. Otherwise dedicated to pen-and-ink drawing, the nineteenth-century novel canon, and fingerstyle guitar.
+              I am a Director at <a href="https://www.finmechanics.com/" target="_blank" rel="noreferrer" data-cursor="VISIT" className="font-normal text-[var(--text-primary)] underline decoration-[var(--accent)]/50 underline-offset-4 hover:decoration-[var(--accent)] hover:text-[var(--accent)] transition-colors">Finmechanics</a>, where I lead product journey and growth. By discipline, I am a systems architect engineering enterprise financial platforms, local-first tools, and intelligent data systems. Beyond engineering, I have a deep passion for writing and literature, and spend my nights dedicated to fiction craft, pen-and-ink drawing, the nineteenth-century novel canon, and fingerstyle guitar.
             </p>
 
             {/* Professional Role Callout */}
@@ -87,31 +87,31 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               </div>
             </div>
 
-            <div className="text-xs font-mono text-[var(--text-secondary)] space-y-2 leading-relaxed pt-2">
-              <div className="flex items-center justify-between border-b border-editorial pb-1.5">
-                <span className="text-[var(--text-muted)]">ROLE:</span>
+            <div className="text-xs font-mono text-[var(--text-secondary)] space-y-2.5 leading-relaxed pt-2">
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6 border-b border-editorial pb-2">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)] font-semibold shrink-0 sm:w-20">ROLE</span>
                 <a
                   href="https://www.finmechanics.com/"
                   target="_blank"
                   rel="noreferrer"
                   data-cursor="VISIT"
-                  className="text-[var(--text-primary)] font-medium hover:text-[var(--accent)] inline-flex items-center gap-1 transition-colors group"
+                  className="text-[var(--text-primary)] font-medium hover:text-[var(--accent)] inline-flex items-center gap-1.5 transition-colors group sm:text-right"
                 >
                   <span>Director (Product Journey & Growth) @ Finmechanics</span>
-                  <ArrowUpRight className="w-3 h-3 text-[var(--accent)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="w-3 h-3 text-[var(--accent)] shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               </div>
-              <div className="flex justify-between border-b border-editorial pb-1.5">
-                <span className="text-[var(--text-muted)]">CRAFT:</span>
-                <span className="text-[var(--text-primary)] font-medium">Electron · React 19 · Next.js · Supabase</span>
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6 border-b border-editorial pb-2">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)] font-semibold shrink-0 sm:w-20">CRAFT</span>
+                <span className="text-[var(--text-primary)] font-medium sm:text-right">Electron · React 19 · Next.js · Supabase</span>
               </div>
-              <div className="flex justify-between border-b border-editorial pb-1.5">
-                <span className="text-[var(--text-muted)]">CANON:</span>
-                <span className="text-[var(--text-primary)] font-medium">Dostoevsky · Austen · Murakami</span>
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6 border-b border-editorial pb-2">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)] font-semibold shrink-0 sm:w-20">CANON</span>
+                <span className="text-[var(--text-primary)] font-medium sm:text-right">Dostoevsky · Austen · Murakami</span>
               </div>
-              <div className="flex justify-between border-b border-editorial pb-1.5">
-                <span className="text-[var(--text-muted)]">ANALOG:</span>
-                <span className="text-[var(--text-primary)] font-medium">Graphite · Sakura Micron · Acoustic EADGBE</span>
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6 border-b border-editorial pb-2">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)] font-semibold shrink-0 sm:w-20">ANALOG</span>
+                <span className="text-[var(--text-primary)] font-medium sm:text-right">Graphite · Sakura Micron · Acoustic EADGBE</span>
               </div>
             </div>
 
@@ -164,7 +164,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
               src="/images/bio/portrait.jpg"
               hoverSrc="/images/bio/portrait-color.jpg"
               alt="Mrinal Dharmik — Studio Portrait"
-              caption="MRINAL DHARMIK · STUDIO PORTRAIT (HOVER FOR COLOR)"
+              caption="MRINAL DHARMIK · STUDIO PORTRAIT"
               aspectRatio="aspect-[4/3]"
               placeholderTip="Drop portrait: /public/images/bio/portrait.jpg"
               dimensions="1200 × 900 px"

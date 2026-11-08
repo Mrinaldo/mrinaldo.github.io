@@ -13,6 +13,7 @@ export interface Project {
   liveUrl?: string;
   category: 'desktop' | 'web' | 'extension' | 'enterprise';
   icon: string;
+  status?: 'released' | 'coming-soon' | 'live' | 'enterprise';
 }
 
 export interface AuthorStudy {
