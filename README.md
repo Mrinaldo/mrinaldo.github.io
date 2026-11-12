@@ -16,7 +16,7 @@ The site introduces a reactive dual-state system toggled via the navbar or keybo
   - **Mriter**: Desktop novel writing & publishing studio (Electron, React 19, TipTap, William Shunn format export, EPUB 3 generator).
   - **Mrews**: Knowledge-first curated news feed with dynamic multi-factor affinity scoring (Next.js 15, Supabase, PostgreSQL).
   - **Mreader**: Minimalist distraction-free e-reader engine (React 19, Foliate-js, Dexie IndexedDB).
-  - **Auronova Consulting**: Production fintech & financial risk analytics portal ([mrinaldo.gitlab.io](https://mrinaldo.gitlab.io/)).
+  - **Web Works Archive**: Portfolio aggregation hub preserving standalone production web platforms (SARC IIT Bombay, Auronova Consulting, Alumination '17) ([mrinaldo.gitlab.io](https://mrinaldo.gitlab.io/)).
   - **EventsJournal**: Social event community platform with Supabase RLS.
 
 ### ✒️ Artisan Mode (Craft & Scribe)
@@ -75,5 +75,5 @@ Production assets are generated in `dist/`.
 - **Goodreads:** [mrinal-dharmik](https://www.goodreads.com/user/show/61312551-mrinal-dharmik)
 - **Spotify:** [mrinaldo](https://open.spotify.com/user/5hr3oulwnmq8rzndtr33tk5ib)
 - **GitHub:** [@Mrinaldo](https://github.com/Mrinaldo)
-- **Auronova:** [mrinaldo.gitlab.io](https://mrinaldo.gitlab.io/)
+- **Web Archive:** [mrinaldo.gitlab.io](https://mrinaldo.gitlab.io/)
 - **Email:** mrinal.dharmik@gmail.com

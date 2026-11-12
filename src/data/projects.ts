@@ -54,20 +54,21 @@ export const PROJECTS: Project[] = [
     status: 'coming-soon'
   },
   {
-    id: 'auronova',
-    title: 'Auronova Consulting',
-    subtitle: 'Freelance Web Design & Motion UI Experience',
-    description: 'A freelance web design and development project crafted for Auronova Consulting. Designed the complete corporate website featuring extensive use of lightweight Lottie vector animations, bespoke typographic hierarchy, and responsive UI/UX to create an engaging visual narrative around their financial risk consulting domains.',
-    tags: ['Freelance Web Design', 'Lottie Animations', 'UI/UX Design', 'Visual Storytelling', 'Frontend Development'],
+    id: 'web-archive',
+    title: 'Web Works Archive',
+    subtitle: 'Curated Production Web Platforms & Interactive Systems',
+    description: 'A central portfolio aggregation hub and companion digital archive preserving standalone production web platforms, single-page React applications, and interactive digital interfaces engineered across the years. Curates live deployments including SARC IIT Bombay (React 19 SPA), Auronova Consulting (Fintech & Lottie Motion), and Alumination \'17 (Skrollr Parallax) with zero-backend static architectures and live in-browser playback.',
+    tags: ['Portfolio Archive', 'React 19 & SPAs', 'Parallax Motion', 'Corporate Fintech', 'GitLab Pages', 'Zero Backend'],
     highlights: [
-      'Heavy integration of Lottie vector animations for dynamic visual engagement',
-      'Bespoke UI/UX design showcasing financial risk and compliance consulting',
-      'Interactive visual presentation of complex banking frameworks with high polish',
-      'Live deployment accessible globally at mrinaldo.gitlab.io'
+      'SARC IIT Bombay: Pure React 19 single-page app with 3D tilt cards, dynamic carousels & zero backend',
+      'Auronova Consulting: 40+ page enterprise risk consultancy portal with bespoke Lottie & SVG motion UX',
+      'Alumination \'17: Flagship IIT Bombay convention portal with Skrollr parallax mechanics & vector animation',
+      'Central aggregation engine featuring category filters, search indexing, full-resolution lightboxes & direct launches'
     ],
     liveUrl: 'https://mrinaldo.gitlab.io/',
+    githubUrl: 'https://gitlab.com/Mrinaldo/mrinaldo.gitlab.io',
     category: 'web',
-    icon: 'Briefcase',
+    icon: 'Layers',
     status: 'live'
   },
   {

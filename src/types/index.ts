@@ -16,6 +16,23 @@ export interface Project {
   status?: 'released' | 'coming-soon' | 'live' | 'enterprise';
 }
 
+export interface ArchivedSite {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  year: string;
+  role: string;
+  summary: string;
+  tags: string[];
+  liveUrl: string;
+  image: string;
+  caption: string;
+  highlights: string[];
+  badge?: string;
+  stats?: { label: string; value: string }[];
+}
+
 export interface AuthorStudy {
   author: string;
   period: string;

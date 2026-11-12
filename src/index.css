@@ -13,10 +13,11 @@
     --accent: #b84a28;
     --accent-subtle: rgba(184, 74, 40, 0.06);
     --accent-glow: rgba(184, 74, 40, 0.15);
+    /* Pure Sans Typography Architecture: Syne + Inter + JetBrains Mono */
     --font-display: 'Syne', sans-serif;
-    --font-serif: 'Newsreader', Georgia, serif;
-    --font-mono: 'JetBrains Mono', monospace;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
   }
 }
 
