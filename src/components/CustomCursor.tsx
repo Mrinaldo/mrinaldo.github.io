@@ -41,17 +41,21 @@ export const CustomCursor: React.FC = () => {
         const text = cursorTarget.getAttribute('data-cursor') || '';
         setCursorText(text);
         setIsHovered(true);
+        document.body.classList.add('has-custom-cursor-text');
       } else if (interactiveTarget) {
         setCursorText('');
         setIsHovered(true);
+        document.body.classList.remove('has-custom-cursor-text');
       } else {
         setCursorText('');
         setIsHovered(false);
+        document.body.classList.remove('has-custom-cursor-text');
       }
     };
 
     const handleMouseLeave = () => {
       setIsVisible(false);
+      document.body.classList.remove('has-custom-cursor-text');
     };
 
     // Smooth lerp loop for the trailing ring
@@ -73,6 +77,7 @@ export const CustomCursor: React.FC = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      document.body.classList.remove('has-custom-cursor-text');
       cancelAnimationFrame(animId);
     };
   }, [isVisible]);
@@ -81,10 +86,12 @@ export const CustomCursor: React.FC = () => {
 
   return (
     <>
-      {/* Precision Core Dot */}
+      {/* Precision Core Dot (scaled to 0 when badge text is active to avoid covering text) */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[var(--accent)] pointer-events-none z-[9999] transition-opacity duration-200"
+        className={`fixed top-0 left-0 w-2 h-2 rounded-full bg-[var(--accent)] pointer-events-none z-[9999] transition-all duration-150 ${
+          cursorText ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
+        }`}
         style={{ willChange: 'transform' }}
       />
 
@@ -103,7 +110,7 @@ export const CustomCursor: React.FC = () => {
         {cursorText && (
           <span
             ref={textRef}
-            className="text-[10px] font-mono font-bold tracking-widest uppercase animate-fade-in select-none"
+            className="text-[10px] font-mono font-bold tracking-widest uppercase animate-fade-in select-none pointer-events-none whitespace-nowrap px-1"
           >
             {cursorText}
           </span>

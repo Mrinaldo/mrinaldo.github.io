@@ -67,6 +67,27 @@ body {
   }
 }
 
+/* Custom Cursor Rules on Desktop / Fine Pointer Devices */
+@media (pointer: fine) {
+  /* Hide native pointer on custom cursor targets so the arrow does not obstruct badge text */
+  [data-cursor],
+  [data-cursor] * {
+    cursor: none !important;
+  }
+
+  body.has-custom-cursor-text,
+  body.has-custom-cursor-text * {
+    cursor: none !important;
+  }
+
+  /* Ensure text inputs and textareas always display the standard text editing I-beam */
+  input,
+  textarea,
+  [contenteditable="true"] {
+    cursor: text !important;
+  }
+}
+
 /* Marquee infinite scroll */
 @keyframes marquee {
   0% { transform: translate3d(0, 0, 0); }
