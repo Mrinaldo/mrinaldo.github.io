@@ -57,13 +57,13 @@ export const PROJECTS: Project[] = [
     id: 'web-archive',
     title: 'Web Works Archive',
     subtitle: 'Curated Production Web Platforms & Interactive Systems',
-    description: 'A central portfolio aggregation hub and companion digital archive preserving standalone production web platforms, single-page React applications, and interactive digital interfaces engineered across the years. Curates live deployments including SARC IIT Bombay (React 19 SPA), Auronova Consulting (Fintech & Lottie Motion), and Alumination \'17 (Skrollr Parallax) with zero-backend static architectures and live in-browser playback.',
+    description: 'A central portfolio aggregation hub and companion digital archive preserving standalone production web platforms, single-page React applications, and interactive digital interfaces engineered across the years. Curates live deployments including SARC IIT Bombay (React 19 SPA), SARC Blog (Editorial React SPA), Auronova Consulting (Fintech & Lottie Motion), and Alumination \'17 (Skrollr Parallax) with zero-backend static architectures and live in-browser playback.',
     tags: ['Portfolio Archive', 'React 19 & SPAs', 'Parallax Motion', 'Corporate Fintech', 'GitLab Pages', 'Zero Backend'],
     highlights: [
       'SARC IIT Bombay: Pure React 19 single-page app with 3D tilt cards, dynamic carousels & zero backend',
+      'SARC Blog: Zero-backend React 18 editorial platform preserving 17 historical IIT Bombay works & search',
       'Auronova Consulting: 40+ page enterprise risk consultancy portal with bespoke Lottie & SVG motion UX',
-      'Alumination \'17: Flagship IIT Bombay convention portal with Skrollr parallax mechanics & vector animation',
-      'Central aggregation engine featuring category filters, search indexing, full-resolution lightboxes & direct launches'
+      'Alumination \'17: Flagship IIT Bombay convention portal with Skrollr parallax mechanics & vector animation'
     ],
     liveUrl: 'https://mrinaldo.gitlab.io/',
     githubUrl: 'https://gitlab.com/Mrinaldo/mrinaldo.gitlab.io',
